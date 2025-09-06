@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manual Nacional das Ouvidorias</title>
+  <meta name="theme-color" content="#1a3a6c">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+    body{background:linear-gradient(135deg,#1a3a6c,#2c5fa3);color:#333;min-height:100vh;padding:15px}
+    .container{background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.3);width:100%;max-width:1200px;margin:0 auto;overflow:hidden;position:relative}
+    header{background:linear-gradient(to right,#1a3a6c,#2c5fa3);color:#fff;padding:20px 25px;text-align:center;position:relative}
+    header h1{font-size:2.6rem;margin-bottom:8px;text-shadow:0 2px 4px rgba(0,0,0,.2)}
+    header p{font-size:1rem;opacity:.9;max-width:600px;margin:0 auto}
+    .destaque-amarelo{background:#FFEB3B;color:#333;padding:3px 8px;border-radius:4px;font-weight:bold;display:inline-block;box-shadow:0 2px 4px rgba(0,0,0,.2)}
+
+    /* Tema escuro (overrides essenciais) */
+    body.dark{background:linear-gradient(135deg,#0b1e3e,#123d74);color:#e9eef6}
+    body.dark .container{background:#0f172a;color:#e9eef6}
+    body.dark .tabs{background:#0b1327;border-bottom-color:#1e293b}
+    body.dark .tab-btn{color:#cbd5e1}
+    body.dark .tab-btn.active{background:#0b1327;border-bottom-color:#60a5fa;color:#e2e8f0}
+    body.dark .study-section,.method-card,.status-card,.legislation-list,.result-container{background:#0b1327;border-color:#1e293b}
+    body.dark .highlight{background:#0b1f3a;border-left-color:#60a5fa}
+    body.dark .quiz-container, body.dark .results{background:linear-gradient(135deg,#0b1e3e,#123d74)}
+    body.dark mark{background:#facc15;color:#111827}
+
+    /* Botão tema */
+    #themeToggle{position:absolute;right:16px;top:16px}
+
+    /* Abas principais */
+    .tabs{display:flex;background:#f0f4f9;border-bottom:2px solid #d0d8e0;flex-wrap:wrap;perspective:1000px}
+    .tab-btn{flex:1;padding:15px 10px;font-size:1rem;font-weight:600;background:none;border:none;cursor:pointer;transition:all .3s ease;color:#2c5fa3;border-bottom:3px solid transparent;min-width:150px;position:relative;transform-style:preserve-3d;transform:translateZ(0)}
+    .tab-btn:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.3),rgba(0,0,0,.2));border-radius:5px;transform:translateZ(-5px);opacity:0;transition:opacity .3s ease}
+    .tab-btn:hover{background:#e0e8f0;transform:translateY(-2px) translateZ(5px);box-shadow:0 5px 15px rgba(0,0,0,.1)}
+    .tab-btn:hover:before{opacity:1}
+    .tab-btn.active{background:#fff;color:#1a3a6c;border-bottom:3px solid #1a3a6c;transform:translateY(0) translateZ(10px);box-shadow:0 5px 20px rgba(0,0,0,.15);z-index:10}
+    .tab-btn.active:before{opacity:1}
+    .tab-content{display:none;padding:20px;min-height:500px;transform-style:preserve-3d}
+    .tab-content.active{display:block;animation:fadeIn .5s ease}
+
+    /* Abas de capítulos */
+    .chapter-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;background:#f0f4f9;padding:10px;border-radius:10px}
+    .chapter-tab{padding:8px 15px;background:#e0e8f0;border-radius:20px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .3s ease;border:1px solid #d0d8e0;position:relative;transform-style:preserve-3d;transform:translateZ(0)}
+    .chapter-tab:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.3),rgba(0,0,0,.1));border-radius:20px;transform:translateZ(-3px);opacity:0;transition:opacity .3s ease}
+    .chapter-tab:hover{background:#d0d8e0;transform:translateY(-2px) translateZ(3px);box-shadow:0 3px 8px rgba(0,0,0,.1)}
+    .chapter-tab:hover:before{opacity:1}
+    .chapter-tab.active{background:#1a3a6c;color:#fff;border-color:#1a3a6c;transform:translateY(0) translateZ(5px);box-shadow:0 4px 10px rgba(0,0,0,.2)}
+    .chapter-tab.active:before{opacity:1}
+    .chapter-content{display:none;animation:fadeIn .5s ease}
+    .chapter-content.active{display:block}
+
+    .study-section{margin-bottom:30px;background:#f8fafc;border-radius:15px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.05);border-left:5px solid #1a3a6c;transition:transform .3s ease}
+    .study-section:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+    .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;cursor:pointer}
+    .section-header h2{color:#1a3a6c;font-size:1.4rem;display:flex;align-items:center;gap:8px}
+    .section-header i{font-size:1.2rem;color:#1a3a6c;transition:transform .3s ease}
+    .section-content{display:none;padding-top:15px;border-top:1px solid #e0e8f0}
+    .section-content.active{display:block;animation:fadeIn .5s ease}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    .method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin-top:15px}
+    .method-card{background:#fff;border-radius:10px;padding:15px;box-shadow:0 4px 8px rgba(0,0,0,.08);border:1px solid #e0e8f0;transition:all .3s ease;transform-style:preserve-3d;transform:translateZ(0);position:relative}
+    .method-card:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.3),rgba(0,0,0,.1));border-radius:10px;transform:translateZ(-3px);opacity:0;transition:opacity .3s ease}
+    .method-card:hover{transform:translateY(-5px) translateZ(3px);box-shadow:0 8px 16px rgba(0,0,0,.1)}
+    .method-card:hover:before{opacity:1}
+    .method-card h3{color:#1a3a6c;margin-bottom:12px;font-size:1.2rem;display:flex;align-items:center;gap:8px}
+    .method-card ul{padding-left:18px}
+    .method-card p{margin-bottom:8px;line-height:1.5;position:relative;padding-left:15px;font-size:.95rem}
+    .method-card p:before{content:"•";color:#2c5fa3;position:absolute;left:0;font-weight:bold}
+
+    .status-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:15px}
+    .status-card{background:#fff;border-radius:10px;padding:15px;box-shadow:0 4px 8px rgba(0,0,0,.08);border-top:4px solid #1a3a6c;transform-style:preserve-3d;transform:translateZ(0);position:relative}
+    .status-card:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.3),rgba(0,0,0,.1));border-radius:10px;transform:translateZ(-3px);opacity:0;transition:opacity .3s ease}
+    .status-card:hover:before{opacity:1}
+    .status-card h3{color:#1a3a6c;margin-bottom:10px;font-size:1.2rem}
+    .status-card p{line-height:1.5;margin-bottom:8px;font-size:.95rem}
+
+    .timeline{position:relative;padding:15px 0;margin-top:15px}
+    .timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:4px;background:#1a3a6c;border-radius:2px}
+    .timeline-item{position:relative;padding-left:40px;margin-bottom:25px}
+    .timeline-item:last-child{margin-bottom:0}
+    .timeline-item::before{content:'';position:absolute;left:12px;top:5px;width:16px;height:16px;border-radius:50%;background:#2c5fa3;border:3px solid #fff;z-index:1}
+    .timeline-content{background:#fff;border-radius:10px;padding:12px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+    .timeline-content h3{color:#1a3a6c;margin-bottom:8px;font-size:1.1rem}
+    .timeline-content p{font-size:.95rem}
+
+    .legislation-list{background:#fff;border-radius:10px;padding:15px;margin-top:15px;box-shadow:0 4px 8px rgba(0,0,0,.08)}
+    .legislation-item{padding:12px;border-bottom:1px solid #e0e8f0;display:flex;align-items:flex-start;gap:12px}
+    .legislation-item:last-child{border-bottom:none}
+    .legislation-item i{color:#1a3a6c;font-size:1.1rem;margin-top:3px}
+    .legislation-item a{color:#2c5fa3;text-decoration:none;font-weight:600}
+    .legislation-item a:hover{text-decoration:underline}
+
+    /* Conteúdo do Manual */
+    #Manual-content{background:#fff;border-radius:10px;padding:20px;margin-top:15px;box-shadow:0 4px 8px rgba(0,0,0,.08);line-height:1.6;font-size:.95rem}
+    #Manual-content h3{color:#1a3a6c;margin:20px 0 10px;font-size:1.3rem}
+    #Manual-content h4{color:#1a3a6c;margin:15px 0 8px;font-size:1.1rem}
+    #Manual-content p{margin-bottom:12px}
+    #Manual-content strong{color:#1a3a6c}
+
+    .highlight{background:#e8f4ff;padding:15px;border-radius:8px;margin:15px 0;border-left:4px solid #1a3a6c;font-size:.95rem}
+
+    .interactive-diagram{display:flex;justify-content:center;flex-wrap:wrap;margin:20px 0;gap:10px}
+    .flow-step{background:#1a3a6c;color:#fff;padding:12px 20px;border-radius:8px;text-align:center;min-width:110px;cursor:pointer;transition:all .3s ease;position:relative;font-size:.9rem;transform-style:preserve-3d;transform:translateZ(0)}
+    .flow-step:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.2),rgba(0,0,0,.2));border-radius:8px;transform:translateZ(-4px);opacity:0;transition:opacity .3s ease}
+    .flow-step:hover{transform:translateY(-5px) translateZ(4px);background:#2c5fa3;box-shadow:0 5px 15px rgba(0,0,0,.2)}
+    .flow-step:hover:before{opacity:1}
+    .flow-step:after{content:"→";position:absolute;right:-20px;top:50%;transform:translateY(-50%);color:#1a3a6c;font-size:1.3rem}
+    .flow-step:last-child:after{display:none}
+    #flow-info{background:#e8f4ff;padding:20px;border-radius:10px;margin-top:20px;border-left:4px solid #1a3a6c;display:none;animation:fadeIn .5s ease}
+    #flow-title{color:#1a3a6c;margin-bottom:10px}
+
+    .credits{text-align:center;padding:20px;background:#f0f4f9;border-top:2px solid #d0d8e0;color:#1a3a6c;font-size:.9rem}
+    .credits a{color:#2c5fa3;text-decoration:none;font-weight:600}
+    .credits a:hover{text-decoration:underline}
+
+    /* Quiz */
+    .quiz-intro{text-align:center;max-width:700px;margin:0 auto;padding:20px;background:linear-gradient(135deg,#1a3a6c,#2c5fa3);border-radius:15px;color:#fff}
+    .quiz-intro h2{color:#fff;margin-bottom:15px;font-size:1.6rem}
+    .quiz-intro p{margin-bottom:20px;line-height:1.6;font-size:1rem}
+    .difficulty-selector{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:15px 0 25px}
+
+    .level-btn{background:linear-gradient(to bottom,#f0f0f0,#e0e0e0);border:none;border-radius:10px;padding:12px 20px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 6px rgba(0,0,0,.1);flex:1;min-width:140px;max-width:200px;color:#1a3a6c;position:relative;transform-style:preserve-3d;transform:translateZ(0)}
+    .level-btn:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.3),rgba(0,0,0,.15));border-radius:10px;transform:translateZ(-5px);opacity:0;transition:opacity .3s ease}
+    .level-btn:hover{transform:translateY(-3px) translateZ(5px);box-shadow:0 6px 12px rgba(0,0,0,.15)}
+    .level-btn:hover:before{opacity:1}
+    .level-btn.easy{background:linear-gradient(to bottom,#d4edda,#c3e6cb);border-left:5px solid #28a745}
+    .level-btn.medium{background:linear-gradient(to bottom,#fff3cd,#ffeeba);border-left:5px solid #ffc107}
+    .level-btn.hard{background:linear-gradient(to bottom,#f8d7da,#f5c6cb);border-left:5px solid #dc3545}
+    .level-btn.expert{background:linear-gradient(to bottom,#cce5ff,#b8daff);border-left:5px solid #007bff}
+
+    .quiz-container{display:none;background:linear-gradient(135deg,#1a3a6c,#2c5fa3);color:#fff;padding:20px;border-radius:15px;margin-top:15px}
+    .question-header{display:flex;justify-content:space-between;margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid rgba(255,255,255,.2)}
+    .question-counter{font-size:1rem;font-weight:600}
+    .score{background:rgba(255,255,255,.2);padding:5px 12px;border-radius:20px;font-weight:600;font-size:.95rem}
+    .question{font-size:1.2rem;margin-bottom:25px;line-height:1.5;font-weight:500}
+    .options{display:grid;gap:12px;margin-bottom:25px}
+
+    .option{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:10px;padding:12px 15px;cursor:pointer;transition:all .2s ease;font-size:1rem;position:relative;transform-style:preserve-3d;transform:translateZ(0)}
+    .option:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.2),rgba(0,0,0,.1));border-radius:10px;transform:translateZ(-3px);opacity:0;transition:opacity .3s ease}
+    .option:hover{background:rgba(255,255,255,.2);transform:translateX(5px) translateZ(3px)}
+    .option:hover:before{opacity:1}
+    .option.selected{background:rgba(0,123,255,.3);border-color:#007bff;font-weight:600;transform:translateX(5px) translateZ(3px)}
+    .option.correct{background:rgba(40,167,69,.3);border-color:#28a745}
+    .option.incorrect{background:rgba(220,53,69,.3);border-color:#dc3545}
+
+    .navigation{display:flex;justify-content:space-between}
+    .nav-btn{background:linear-gradient(to right,#1a3a6c,#2c5fa3);color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 6px rgba(0,0,0,.1);border:1px solid rgba(255,255,255,.3);position:relative;transform-style:preserve-3d;transform:translateZ(0)}
+    .nav-btn:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.2),rgba(0,0,0,.15));border-radius:8px;transform:translateZ(-4px);opacity:0;transition:opacity .3s ease}
+    .nav-btn:disabled{background:#6c757d;cursor:not-allowed;opacity:.7;transform:translateZ(0)}
+    .nav-btn:hover:not(:disabled){transform:translateY(-2px) translateZ(4px);box-shadow:0 6px 10px rgba(0,0,0,.2)}
+    .nav-btn:hover:not(:disabled):before{opacity:1}
+
+    .results{text-align:center;padding:25px;display:none;position:relative;background:linear-gradient(135deg,#1a3a6c,#2c5fa3);border-radius:15px;margin-top:15px;color:#fff}
+    .results h2{font-size:1.8rem;color:#D4AF37;margin-bottom:15px}
+    .final-score{font-size:4rem;font-weight:700;color:#D4AF37;margin:15px 0;text-shadow:0 3px 6px rgba(0,0,0,.1);position:relative;z-index:2}
+    .message{font-size:1.2rem;margin-bottom:25px}
+    .feedback{background:rgba(255,255,255,.1);border-radius:10px;padding:15px;margin-top:25px;text-align:left}
+    .feedback h3{color:#D4AF37;margin-bottom:12px;font-size:1.2rem}
+    .progress-bar{height:8px;background:rgba(255,255,255,.2);border-radius:4px;margin:15px 0;overflow:hidden}
+    .progress{height:100%;background:linear-gradient(to right,#D4AF37,#FFD700);border-radius:4px;transition:width .5s ease}
+    .feedback-item{background:#fff;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 2px 5px rgba(0,0,0,.1);color:#333}
+    .feedback-question{font-weight:bold;margin-bottom:10px}
+    .feedback-answer{margin-bottom:8px;display:flex;align-items:center}
+    .correct-answer{color:#28a745}
+    .incorrect-answer{color:#dc3545}
+    .feedback-icon{margin-left:8px;font-size:1.2rem}
+
+    .result-container{background:#fff;border-radius:15px;padding:30px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.1);margin:20px auto;max-width:600px}
+    .result-title{color:#1a3a6c;margin-bottom:20px;font-size:1.8rem}
+    .result-visual{margin:30px 0;display:flex;justify-content:center}
+    .result-circle{width:200px;height:200px;border-radius:50%;background:conic-gradient(#28a745 var(--percentage),#e9ecef var(--percentage));display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 10px 20px rgba(0,0,0,.1)}
+    .result-inner{width:160px;height:160px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 0 10px rgba(0,0,0,.1)}
+    .result-percent{font-size:2.5rem;font-weight:bold;color:#1a3a6c}
+    .result-label{font-size:1rem;color:#6c757d;margin-top:5px}
+    .result-feedback{font-size:1.2rem;margin:20px 0;color:#1a3a6c;font-weight:500}
+    .result-stars{margin:20px 0;font-size:2rem;color:#FFD700}
+    .restart-btn{background:linear-gradient(to right,#1a3a6c,#2c5fa3);color:#fff;border:none;border-radius:8px;padding:12px 25px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 6px rgba(0,0,0,.1);margin-top:20px;position:relative;transform-style:preserve-3d;transform:translateZ(0)}
+    .restart-btn:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.2),rgba(0,0,0,.15));border-radius:8px;transform:translateZ(-4px);opacity:0;transition:opacity .3s ease}
+    .restart-btn:hover{transform:translateY(-2px) translateZ(4px);box-shadow:0 6px 10px rgba(0,0,0,.2)}
+    .restart-btn:hover:before{opacity:1}
+
+    /* PodeOuvir */
+    .pode-ouvir-container{text-align:center;padding:30px}
+    .pode-ouvir-container iframe{width:100%;height:600px;border:none;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+    .pode-ouvir-info{margin-top:20px;background:#e8f4ff;padding:15px;border-radius:10px;border-left:4px solid #1a3a6c}
+
+    /* Barra de busca + compartilhar */
+    .searchbar{display:flex;gap:8px;align-items:center;margin:10px 0;flex-wrap:wrap}
+    .searchbar input{flex:1;min-width:220px;padding:8px 10px;border:1px solid #d0d8e0;border-radius:8px}
+    mark{background:#FFEB3B;padding:0 2px;border-radius:2px}
+
+    /* Responsivo */
+    @media (max-width:768px){
+      .tab-btn{min-width:100%;font-size:.95rem;padding:12px 8px}
+      .flow-step{width:100%;max-width:220px}
+      .flow-step:after{content:"↓";right:50%;top:100%;transform:translateX(50%);left:auto}
+      .interactive-diagram{flex-direction:column;align-items:center}
+      .method-grid{grid-template-columns:1fr}
+      .result-circle{width:180px;height:180px}
+      .result-inner{width:140px;height:140px}
+      .pode-ouvir-container iframe{height:400px}
+    }
+    @media (max-width:480px){
+      header h1{font-size:1.5rem}
+      .section-header h2{font-size:1.2rem}
+      .question{font-size:1.1rem}
+      .navigation{flex-direction:column;gap:10px}
+      .nav-btn{width:100%}
+      .level-btn{min-width:100%}
+      .result-circle{width:150px;height:150px}
+      .result-inner{width:120px;height:120px}
+      .result-percent{font-size:2rem}
+      .pode-ouvir-container iframe{height:300px}
+    }
+
+    /* Impressão (PDF limpo dos capítulos) */
+    @media print{
+      .tabs,.chapter-tabs,.interactive-diagram,.navigation,.quiz-intro,.quiz-container,.credits,#themeToggle,.searchbar{display:none!important}
+      .chapter-content{display:block!important}
+      body{background:#fff}
+      .container{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-headset"></i> GUIA DO OUVIDOR</h1>
+      <p>MINUTA DO MANUAL NACIONAL DAS OUVIDORIAS</p>
+      <p><span class="destaque-amarelo">UTILIZAÇÃO SOMENTE PARA CONSULTA</span></p>
+      <button id="themeToggle" class="nav-btn" type="button" aria-label="Alternar tema"><i class="fas fa-moon"></i> Tema</button>
+    </header>
+
+    <!-- Abas principais com ARIA -->
+    <div class="tabs" role="tablist" aria-label="Navegação principal">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="study-tab" id="tab-study" data-tab="study"><i class="fas fa-book"></i> Material de Estudo</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="quiz-tab" id="tab-quiz" data-tab="quiz"><i class="fas fa-question-circle"></i> Quiz</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="pode-ouvir-tab" id="tab-pode-ouvir" data-tab="pode-ouvir"><i class="fas fa-volume-up"></i> PodeOuvir!</button>
+    </div>
+
+    <!-- TAB: Estudo -->
+    <div class="tab-content active" id="study-tab" role="tabpanel" aria-labelledby="tab-study">
+      <!-- Minuta do Manual -->
+      <div class="study-section">
+        <div class="section-header" data-section="Manual">
+          <h2><i class="fas fa-file-alt"></i> Minuta do Manual Nacional das Ouvidorias</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+
+        <div class="section-content" id="Manual-content">
+          <!-- Barra de busca e compartilhar -->
+          <div class="searchbar">
+            <input id="searchInput" type="search" placeholder="Busque por 'Art. 22', 'LGPD', 'JALECO'..." aria-label="Buscar no capítulo">
+            <button id="searchClear" type="button" class="nav-btn">Limpar</button>
+            <button id="shareLink" type="button" class="nav-btn" title="Compartilhar o ponto atual"><i class="fas fa-share-from-square"></i> Compartilhar</button>
+            <span id="searchCount" aria-live="polite"></span>
+          </div>
+
+          <div class="chapter-tabs" role="tablist" aria-label="Capítulos do Manual">
+            <div class="chapter-tab active" data-chapter="capitulo1" role="tab" aria-selected="true" aria-controls="capitulo1">Capítulo I</div>
+            <div class="chapter-tab" data-chapter="capitulo2" role="tab" aria-selected="false" aria-controls="capitulo2">Capítulo II</div>
+            <div class="chapter-tab" data-chapter="capitulo3" role="tab" aria-selected="false" aria-controls="capitulo3">Capítulo III</div>
+            <div class="chapter-tab" data-chapter="capitulo4" role="tab" aria-selected="false" aria-controls="capitulo4">Capítulo IV</div>
+            <div class="chapter-tab" data-chapter="capitulo5" role="tab" aria-selected="false" aria-controls="capitulo5">Capítulo V</div>
+            <div class="chapter-tab" data-chapter="capitulo6" role="tab" aria-selected="false" aria-controls="capitulo6">Capítulo VI</div>
+            <div class="chapter-tab" data-chapter="capitulo7" role="tab" aria-selected="false" aria-controls="capitulo7">Capítulo VII</div>
+            <div class="chapter-tab" data-chapter="capitulo8" role="tab" aria-selected="false" aria-controls="capitulo8">Capítulo VIII</div>
+            <div class="chapter-tab" data-chapter="capitulo9" role="tab" aria-selected="false" aria-controls="capitulo9">Capítulo IX</div>
+            <div class="chapter-tab" data-chapter="capitulo10" role="tab" aria-selected="false" aria-controls="capitulo10">Capítulo X</div>
+            <div class="chapter-tab" data-chapter="anexo2" role="tab" aria-selected="false" aria-controls="anexo2">Anexo II</div>
+            <div class="chapter-tab" data-chapter="anexo3" role="tab" aria-selected="false" aria-controls="anexo3">Anexo III</div>
+            <div class="chapter-tab" data-chapter="anexo4" role="tab" aria-selected="false" aria-controls="anexo4">Anexo IV</div>
+            <div class="chapter-tab" data-chapter="anexo5" role="tab" aria-selected="false" aria-controls="anexo5">Anexo V</div>
+          </div>
+
+          <!-- CAPÍTULOS -->
+          <div class="chapter-content active" id="capitulo1">
+            <h4>CAPÍTULO I - DISPOSIÇÕES GERAIS</h4>
+            <p><strong>Art. 1º</strong> Para os fins deste Manual, consideram-se:</p>
+            <p>I. Administração pública: conjunto de órgãos e entidades dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios, incluindo a Advocacia Pública, a Defensoria Pública e os Conselhos de Fiscalização Profissional no exercício de função pública delegada.</p>
+            <p>II. Agente público: pessoa física que exerce, ainda que transitoriamente ou sem remuneração, cargo, emprego ou função pública por eleição, nomeação, designação, contratação ou qualquer outra forma de investidura ou vínculo. No Sistema Cofen/Conselhos Regionais de Enfermagem, são considerados agentes públicos os conselheiros federais e regionais, empregados públicos, ocupantes de cargos comissionados, colaboradores, estagiários e prestadores de serviço.</p>
+            <p>III. Anonimização: processo de tratamento de dados pessoais por meio do qual a informação perde a possibilidade de associação, direta ou indireta, a uma pessoa natural, de modo irreversível, mesmo com a utilização de informações adicionais pelo controlador, nos termos da LGPD.</p>
+            <p>IV. Complementação: no âmbito do Sistema de Ouvidoria da Administração Pública, é o ato por meio do qual o(a) usuário(a) é instado(a) a fornecer informações ou documentos complementares necessários à adequada análise e tratamento de sua manifestação.</p>
+            <p>V. Descaracterização: técnica avançada de tratamento de informações sensíveis ou identificáveis, que consiste na remoção ou alteração de dados e elementos capazes de permitir a identificação do titular, sendo aplicável de forma ampla a textos, relatórios ou registros, podendo incluir anonimização e pseudonimização.</p>
+            <p>VI. Habilitação: procedimento preliminar de triagem realizado pela Ouvidoria, destinado à verificação dos requisitos mínimos de autoria, materialidade e relevância da denúncia, com vistas à sua admissibilidade e eventual encaminhamento à unidade de apuração competente.</p>
+            <p>VII. Manifestação: reclamação, denúncia, sugestão, elogio, solicitação ou qualquer outro pronunciamento do usuário que tenha por objeto a prestação de serviços públicos ou a conduta de agentes públicos, observado o disposto na Lei nº 13.460/2017 e no Decreto nº 9.492/2018.</p>
+            <p>VIII. Pseudonimização: técnica de tratamento de dados pessoais na qual os elementos identificadores diretos são substituídos por pseudônimos, de forma a dificultar a associação dos dados a um titular específico sem o uso de informações adicionais mantidas separadamente em ambiente seguro, conforme a LGPD.</p>
+            <p>IX. Serviço público: atividade administrativa ou de prestação direta ou indireta de bens ou serviços à população, exercida por órgão ou entidade integrante da administração pública, incluídos os conselhos profissionais dotados de poder de fiscalização e regulação.</p>
+            <p>X. Tarjamento: procedimento técnico de ocultação de dados pessoais ou sensíveis, por meio de tarja opaca e não reversível, garantindo a privacidade do titular das informações, especialmente em documentos públicos sujeitos a divulgação.</p>
+            <p>XI. Unidade de apuração: departamento, setor, comissão ou autoridade competente para realizar o juízo de admissibilidade e o tratamento das denúncias recebidas. Incluem-se como unidades de apuração: auditorias, corregedorias, comissões de ética, fiscalização e outras previstas na estrutura organizacional.</p>
+            <p>XII. Usuário: pessoa física ou jurídica que utiliza, incluindo o(a) profissional de enfermagem, usufrui ou tem a expectativa de utilizar, de forma direta ou indireta, efetiva ou potencialmente, serviços públicos prestados pelo Conselho Federal ou pelos Conselhos Regionais de Enfermagem.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo2">
+            <h4>CAPÍTULO II - FUNÇÕES, ESTRUTURA DA OUVIDORIA</h4>
+            <p><strong>Art. 2º</strong> A Ouvidoria, como setor administrativo do Sistema Cofen/Conselhos Regionais de Enfermagem, atua como um canal de comunicação mediador entre os usuários e a autarquia. Sua principal função é garantir os direitos dos usuários, promover a participação social e contribuir para o aprimoramento da gestão pública na prestação de serviços.</p>
+            <p><strong>Art. 3º</strong> As Ouvidorias devem estar diretamente subordinadas à Presidência da respectiva Autarquia, sendo resguardada sua independência funcional no âmbito de suas atribuições.</p>
+            <p><strong>Art. 4º</strong> Para fins de registro, acompanhamento e resposta às manifestações, a Ouvidoria deverá assegurar canais de comunicação acessíveis, inclusivos e adequados às necessidades dos usuários, em conformidade com a Lei nº 13.460/2017.</p>
+            <p>§1º O Cofen e os Conselhos Regionais de Enfermagem deverão manter em seus sites oficiais um portal de Ouvidoria de fácil acesso. Este portal deve permitir ao usuário registrar, acompanhar e receber a resposta de suas manifestações, garantindo a proteção e a confidencialidade de seus dados pessoais.</p>
+            <p>§2º Caso seja disponibilizado atendimento presencial, as instalações devem possuir infraestrutura adequada, reservada e autônoma, visando garantir a privacidade do usuário e a confidencialidade das informações.</p>
+            <p><strong>Art. 5º</strong> Compete à Ouvidoria, em articulação com os setores administrativos, analisar e responder manifestações de forma clara, objetiva e fundamentada, observando os prazos e garantindo a conformidade com as legislações vigentes, especialmente a Lei Geral de Proteção de Dados (LGPD).</p>
+            <p>Parágrafo único. Poderão ser adotadas respostas padronizadas, previamente validadas, para demandas administrativas de natureza recorrente, a fim de assegurar uniformidade, agilidade e conformidade no atendimento.</p>
+            <p><strong>Art. 6º</strong> Não compete à Ouvidoria emitir juízo de valor, se pronunciar sobre matérias não regulamentadas ou atuar em substituição aos canais de atendimento e setores administrativos competentes do Sistema Cofen/Coren.</p>
+            <p>Parágrafo único. As manifestações que versarem sobre matérias não regulamentadas deverão ser encaminhadas aos setores técnicos competentes para análise e elaboração de resposta, a qual será submetida à apreciação e aprovação do Plenário do respectivo Conselho.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo3">
+            <h4>CAPÍTULO III - DAS COMPETÊNCIAS DA OUVIDORIA-GERAL E DAS OUVIDORIAS REGIONAIS</h4>
+            <p><strong>Art. 7º</strong> A Ouvidoria-Geral do Cofen e as Ouvidorias dos Conselhos Regionais deverão atuar de forma colaborativa e complementar, garantindo integração e cooperação mútua, com o objetivo de qualificar a gestão pública, ampliar a participação social e fortalecer o Sistema de Ouvidorias do Cofen/Conselhos Regionais de Enfermagem.</p>
+            <p><strong>Art. 8º</strong> São atribuições da Ouvidoria-Geral do Cofen:</p>
+            <p>I. Assegurar a plena execução das atribuições institucionais da Ouvidoria-Geral, em conformidade com o Manual.</p>
+            <p>II. Propor ao Plenário do Cofen medidas de aprimoramento contínuo dos fluxos, processos e procedimentos nos serviços de Ouvidoria do Sistema Cofen/Conselhos Regionais.</p>
+            <p>III. Promover a integração e a padronização de normas e rotinas entre as Ouvidorias Regionais.</p>
+            <p>IV. Representar institucionalmente a Ouvidoria-Geral do Cofen, inclusive junto a órgãos de controle.</p>
+            <p>V. Monitorar o cumprimento dos prazos de resposta às manifestações, zelando pelo seu andamento.</p>
+            <p>VI. Cumprir as atribuições previstas no Art. 9º deste Manual, de forma a assegurar a atuação integrada, complementar e cooperativa entre a Ouvidoria-Geral do Cofen e as Ouvidorias Regionais de Enfermagem.</p>
+            <p>VII. Acompanhar o desempenho das Ouvidorias Regionais, garantindo que as atividades e funções operacionais sejam executadas de forma eficiente e alinhada às diretrizes do Sistema.</p>
+            <p>VIII. Prestar apoio técnico e/ou realizar visitas e auditorias presenciais nas Ouvidorias Regionais, com o objetivo de avaliar fluxos e orientar sobre boas práticas.</p>
+            <p>IX. Promover capacitação técnica periódica das equipes das Ouvidorias Regionais, com foco na padronização de fluxos, no cumprimento de prazos e na qualificação das respostas.</p>
+            <p>X. Emitir relatórios analíticos à Presidência do Cofen, sempre que necessário ou solicitado.</p>
+            <p><strong>Art. 9º</strong> São atribuições das Ouvidorias dos Conselhos Regionais de Enfermagem:</p>
+            <p>I. Cumprir e fazer cumprir integralmente as disposições deste Manual, bem como as diretrizes e normativas emitidas pela Ouvidoria-Geral do Cofen.</p>
+            <p>II. Receber, registrar, qualificar e analisar as manifestações, realizando a triagem técnica e promovendo o devido encaminhamento às unidades competentes, com acompanhamento sistemático da tramitação.</p>
+            <p>III. Promover o acesso e a participação dos usuários na gestão pública e na defesa de seus direitos perante o Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
+            <p>IV. Acompanhar o tratamento das manifestações em todas as suas fases, incluindo o cumprimento dos prazos legais e regimentais, e assegurar a qualidade e a efetividade das respostas.</p>
+            <p>V. Atuar de forma isenta, proativa e orientada à escuta qualificada, promovendo o fortalecimento da cidadania.</p>
+            <p>VI. Facilitar o acesso às informações institucionais e promover a transparência sobre os serviços prestados.</p>
+            <p>VII. Acompanhar a elaboração, atualização e implementação da Carta de Serviços ao Usuário no âmbito do Sistema.</p>
+            <p>VIII. Processar e analisar as informações obtidas por meio das manifestações e pesquisas de satisfação, subsidiando a melhoria contínua dos serviços.</p>
+            <p>IX. Emitir relatórios analíticos à Presidência do respectivo Conselho, sempre que necessário ou solicitado.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo4">
+            <h4>CAPÍTULO IV - DO(A) OUVIDOR(A)</h4>
+            <p><strong>Art. 10º</strong> O(A) Ouvidor(a) é elo entre a sociedade e o Sistema Cofen/Conselhos Regionais de Enfermagem, responsável por liderar, coordenar e supervisionar as atividades da Ouvidoria. Sua principal atribuição é assegurar um canal de comunicação que seja eficiente, transparente e acessível.</p>
+            <p>I. Receber, analisar, orientar, encaminhar e responder a manifestações — incluindo denúncias, reclamações, sugestões, solicitações e outras — referentes aos serviços prestados pelo Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
+            <p>II. Estimular a cultura da transparência e da responsabilidade institucional, fortalecendo a participação social e o controle social.</p>
+            <p>III. Acompanhar as Reuniões de Plenário para apresentar as tendências identificadas nas manifestações, auxiliando o Plenário a se manter atualizado sobre as percepções e necessidades da sociedade e dos profissionais de enfermagem.</p>
+            <p>IV. Informar ao Gabinete da Presidência sobre qualquer manifestação cujo prazo de resposta, previsto em lei, seja excedido pelo setor responsável.</p>
+            <p><strong>Art. 11º</strong> O(A) Ouvidor(a) deve zelar pela integridade e confiabilidade dos processos de escuta, análise e resposta, garantindo a conformidade com os princípios da Administração Pública. Ao(À) Ouvidor(a) e à sua equipe é exigido um comportamento ético, zeloso, transparente, sigiloso, íntegro, digno e respeitoso.</p>
+            <p><strong>Art. 12º</strong> O(A) Ouvidor(a) será designado(a) pela Presidência do respectivo Conselho de Enfermagem.</p>
+            <p><strong>Art. 13º</strong> O cargo de Ouvidor(a) deverá ser exercido, preferencialmente, com dedicação exclusiva às atividades da Ouvidoria.</p>
+            <p>§1º Caso o(a) Ouvidor(a) exerça outras atividades na Autarquia, a segregação de funções deverá ser respeitada, a fim de evitar conflito com os objetivos da Ouvidoria.</p>
+            <p>§2º Em caso de afastamento legal do(a) Ouvidor(a), a substituição será realizada por agente público(a) designado(a) pela Presidência, garantindo a continuidade dos serviços.</p>
+            <p><strong>Art. 14º</strong> As competências para ocupar a função de Ouvidor(a) são:</p>
+            <p>I. Possuir Nível Superior e Curso de Capacitação em Ouvidoria.</p>
+            <p>II. Possuir idoneidade moral e reputação ilibada, demonstrando reconhecida credibilidade para o exercício ético, transparente e imparcial do cargo.</p>
+            <p>III. Possuir capacidade para assumir as funções previstas, demonstrando responsabilidade, discrição e organização.</p>
+            <p>IV. Ter capacidade para registrar, analisar, orientar e responder às manifestações de forma adequada e tempestiva.</p>
+            <p>V. Possuir habilidades de comunicação empática, sendo capaz de prevenir e mediar conflitos, e identificar as necessidades especiais dos envolvidos.</p>
+            <p>VI. Manter-se atualizado(a) sobre a legislação e os atos normativos do exercício profissional da Enfermagem, bem como aqueles pertinentes às suas próprias atividades.</p>
+            <p>VII. Possuir visão sistêmica sobre as atividades do Sistema Cofen/Conselhos Regionais de Enfermagem e capacidade para analisar de forma crítica as manifestações, elaborando relatórios que forneçam diagnósticos e recomendações para o aperfeiçoamento da gestão e dos serviços, e a promoção da transparência das atividades realizadas pela Ouvidoria.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo5">
+            <h4>CAPÍTULO V - DAS MANIFESTAÇÕES</h4>
+            <p><strong>Art. 15º</strong> As manifestações recebidas pela Ouvidoria serão tratadas em fluxos e rotinas de trabalho padronizados. Este processo assegura a organização, a rastreabilidade, a transparência, a observância de prazos e a proteção dos dados pessoais, em conformidade com a legislação vigente.</p>
+            <p>Parágrafo único. O Fluxo e Rotinas de Trabalho, que compreende a triagem, a análise e a resposta às manifestações, será detalhado nos <strong>Anexos II, III e IV</strong> deste Manual. Suas etapas são orientadas pelos métodos mnemônicos DIA, JALECO e PROSA, que guiam a rotina administrativa e a gestão operacional da Ouvidoria.</p>
+            <p><strong>Art. 16º</strong> As manifestações dirigidas à Ouvidoria deverão ser registradas por meio de formulário eletrônico no site do Cofen ou dos Conselhos Regionais, ou por outro canal oficial e seguro.</p>
+            <p>§1º Toda manifestação recebida será registrada com a geração de um número de protocolo, permitindo seu acompanhamento pelo(a) manifestante, em conformidade com a Lei de Acesso à Informação, a LGPD e a Lei nº 13.460/2017.</p>
+            <p>§2º Em situações excepcionais, a manifestação poderá ser registrada por meio de formulário físico ou reduzida a termo, garantindo-se os mesmos direitos, sigilo e rastreabilidade dos registros eletrônicos.</p>
+            <p>§3º Consideram-se situações excepcionais:</p>
+            <p>I. Atendimento presencial;</p>
+            <p>II. Indisponibilidade do sistema;</p>
+            <p>III. Limitação de acesso à internet ou dificuldades motoras, cognitivas e/ou intelectuais do(a) manifestante;</p>
+            <p>§4º As manifestações deverão conter as seguintes informações: data do registro; identificação do(a) manifestante, com nome completo, CPF, e-mail, número de inscrição no Coren (quando aplicável), telefone e localidade de residência; tipo de manifestação; assunto e descrição detalhada do fato.</p>
+            <p>§5º Em nenhuma hipótese será recusado o recebimento de manifestações.</p>
+            <p><strong>Art. 17º</strong> As manifestações recebidas serão analisadas, classificadas e encaminhadas às áreas competentes para tratamento, conforme a natureza da demanda.</p>
+            <p>§1º Para garantir a análise adequada das manifestações e a elaboração de respostas tecnicamente fundamentadas, a Ouvidoria tem a prerrogativa de consultar todas as fontes legítimas disponíveis, incluindo sistemas internos, websites, portal da transparência, bases documentais e a legislação em vigor.</p>
+            <p>§2º Manifestações de competência de outro Conselho Regional deverão ser prontamente encaminhadas à Ouvidoria competente, com a devida ciência ao(à) manifestante.</p>
+            <p><strong>Art. 18º</strong> As manifestações registradas no Sistema de Ouvidoria são classificadas por status, conforme o fluxo de tramitação. O objetivo é facilitar o acompanhamento, o controle e a definição de responsabilidades. O detalhamento desses status encontra-se no Anexo V deste Manual, e suas definições básicas são as seguintes:</p>
+            <p>I. A DISTRIBUIR: Manifestação registrada no sistema, ainda não analisada ou triada pela Ouvidoria;</p>
+            <p>II. TRAMITANDO: Situação em que a manifestação, já registrada e analisada pela Ouvidoria, aguarda complementação de informações ou documentos por parte do(a) usuário(a). Durante esse período, o prazo de resposta permanece suspenso.</p>
+            <p>III. ENCAMINHADA: Manifestação enviada à área competente, aguardando resposta técnica ou administrativa;</p>
+            <p>IV. RESPONDIDA: Manifestação com resposta devidamente elaborada e disponível, pendente apenas de avaliação do(a) Ouvidor(a) e envio formal ao(à) manifestante;</p>
+            <p>V. CONCLUÍDA: Manifestação com resposta formal encaminhada ao(à) manifestante e finalizada no sistema da Ouvidoria. Nos casos em que a manifestação esteja concluída no âmbito da Ouvidoria, mas o processo permaneça em tramitação interna, a manifestação poderá ser reaberta após a conclusão da análise pela área competente, conforme os §§ 1º, 2º e 3º do Art. 21 deste Manual.</p>
+            <p><strong>Art. 19º</strong> Todas as comunicações realizadas com os(as) usuários(as) deverão ser feitas de forma clara, concisa, em linguagem cidadã e inclusiva.</p>
+            <p>§1º A resposta conclusiva deve informar ao(à) usuário(a) sobre a procedência ou improcedência de sua manifestação, com justificativas e providências adotadas.</p>
+            <p>§2º Após a finalização da manifestação, o(a) usuário(a) receberá um formulário para avaliação do atendimento prestado pela Ouvidoria.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo6">
+            <h4>CAPÍTULO VI - DOS PRAZOS</h4>
+            <p><strong>Art. 20º</strong> A Ouvidoria terá um prazo de até 30 (trinta) dias corridos para apresentar uma resposta conclusiva às manifestações, contados a partir da data de seu registro. Este período poderá ser prorrogado por um único período adicional de até 30 (trinta) dias corridos, desde que devidamente justificado e com o(a) manifestante informado(a), conforme o Art. 16, §2º, da Lei nº 13.460/2017.</p>
+            <p>Parágrafo único. Para casos de maior complexidade, como processos éticos, denúncias, solicitações de atos normativos ou análises jurídicas, a tramitação deverá ser justificada e documentada no Sistema Eletrônico de Informações (SEI) ou em Processo Administrativo (PAD). O(a) manifestante será formalmente informado(a) e receberá o número de protocolo para acompanhamento.</p>
+            <p><strong>Art. 21º</strong> Para a tramitação interna, a Ouvidoria realizará a análise preliminar para verificar a adequação, a competência e o objeto da manifestação, observando os seguintes prazos operacionais:</p>
+            <p>§1º Para as manifestações no status A Distribuir, a Ouvidoria terá um prazo de até 10 (dez) dias corridos para realizar a análise inicial, classificá-la e, quando for o caso, encaminhá-la ao setor competente.</p>
+            <p>§2º Após a manifestação ser classificada como Encaminhada, os setores administrativos deverão analisá-la, instruí-la e deliberar sobre a demanda no prazo máximo de 15 (quinze) dias corridos, contados do recebimento da solicitação da Ouvidoria.</p>
+            <p>§3º No status Respondida, a Ouvidoria terá um prazo de até 5 (cinco) dias corridos para realizar a análise final e apresentar a devolutiva conclusiva ao(à) manifestante.</p>
+            <p>§4º O Conselho Regional poderá, observando o limite máximo de 30 (trinta) dias, ajustar os prazos internos de acordo com o volume de manifestações e as particularidades de sua estrutura administrativa.</p>
+            <p><strong>Art. 22º</strong> A solicitação de complementação de dados ao(à) manifestante, quando necessária, deverá ser formalizada com a suspensão do prazo de resposta, conforme previsto no §2º do Art. 18º, do Decreto nº 10.229/2020.</p>
+            <p>§1º O prazo para que o(a) manifestante apresente a complementação é de 20 (vinte) dias corridos, prorrogáveis por mais 10 (dez) dias mediante justificativa.</p>
+            <p>§2º Durante a suspensão, a manifestação deverá permanecer no status "Tramitando", e a contagem do prazo será reiniciada a partir do recebimento das informações complementares.</p>
+            <p>§3º A ausência de resposta do(a) manifestante no prazo estipulado resultará na finalização da manifestação por insuficiência de elementos. O sistema registrará a justificativa administrativa para a conclusão.</p>
+            <p>§4º É vedado o envio de solicitações de complementação sucessivas, salvo quando fundamentadas em novas informações ou documentos apresentados pelo(a) manifestante.</p>
+            <p><strong>Art. 23º</strong> Em caráter excepcional, quando o período de análise e deliberações ultrapassar o prazo máximo de 60 (sessenta) dias corridos, a tramitação deverá ser justificada e documentada no SEI ou PAD. O(a) manifestante deverá ser formalmente comunicado(a) e periodicamente atualizado(a) quanto ao andamento do processo.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo7">
+            <h4>CAPÍTULO VII - DO TRATAMENTO DAS DENÚNCIAS</h4>
+            <p><strong>Art. 24º</strong> O tratamento das denúncias observará os princípios da legalidade, impessoalidade, moralidade, publicidade, eficiência, proteção de dados pessoais e respeito à dignidade da pessoa humana.</p>
+            <p><strong>Art. 25º</strong> A Ouvidoria, em cumprimento ao seu papel institucional, realizará uma análise rigorosa e imparcial das denúncias recebidas.</p>
+            <p>§1º Para garantir a apuração dos fatos e a adoção de medidas administrativas cabíveis, a denúncia deverá ser fundamentada em elementos concretos e devidamente comprovados, com a apresentação das seguintes informações:</p>
+            <p>I. Elementos probatórios, como fotos, vídeos, mensagens, e-mails, documentos ou qualquer outro material que corrobore as alegações;</p>
+            <p>II. Dados de testemunhas, incluindo nome completo, endereço, telefone e um breve relato dos fatos presenciados;</p>
+            <p>III. Informações complementares, como data, hora e local exatos dos fatos, bem como outros detalhes que possam auxiliar na habilitação da denúncia.</p>
+            <p>§2º A ausência de informações ou elementos previstos no parágrafo anterior poderá impossibilitar o andamento da denúncia e resultar no arquivamento da manifestação, em conformidade com o § 2º do Art. 22º, deste Manual.</p>
+            <p>§3º A apresentação de informações falsas poderá caracterizar crime de denunciação caluniosa ou comunicação falsa de crime, nos termos dos artigos 339 e 340 do Código Penal.</p>
+            <p><strong>Art. 26º</strong> As denúncias podem ser direcionadas a profissionais de enfermagem, instituições de saúde e de ensino, Conselheiros, Conselhos e Agentes Públicos do Sistema Cofen/Corens, e membros da sociedade.</p>
+            <p><strong>Art. 27º</strong> Ao receber uma denúncia, a Ouvidoria realizará sua classificação, conforme o item II do Anexo II deste Manual, e fará uma análise de habilitação para verificar os elementos mínimos que justifiquem seu encaminhamento.</p>
+            <p>§1º Em denúncias anônimas, o relato é tratado como comunicação de irregularidade e, se houver aptidão, é encaminhado à Presidência para decisão sobre a instauração de procedimento administrativo.</p>
+            <p>§2º Denúncias sem fundamentos éticos e legais serão consideradas infundadas e finalizadas no sistema.</p>
+            <p>§3º Caso a unidade de apuração solicite informações complementares para a análise da denúncia, o procedimento seguirá o disposto nos Arts. 22º e 25º deste Manual.</p>
+            <p><strong>Art. 28º</strong> A resposta conclusiva à denúncia deverá informar se ela foi acolhida ou não pela unidade responsável pela apuração. Em caso de acolhimento, deverão ser fornecidos o número de protocolo e os meios disponíveis para o acompanhamento da tramitação.</p>
+            <p><strong>Art. 29º</strong> A Ouvidoria deverá resguardar, a todo momento, a proteção da identificação dos usuários denunciantes.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo8">
+            <h4>CAPÍTULO VIII - DA PROTEÇÃO DE DADOS PESSOAIS, PRIVACIDADE E SIGILO NAS OUVIDORIAS</h4>
+            <p><strong>Art. 30º</strong> As Ouvidorias do Sistema Cofen/Conselhos Regionais de Enfermagem observarão, de forma estrita, a Lei nº 13.709/2018 (LGPD), a Lei nº 12.527/2011 (LAI) e demais normativos aplicáveis, garantindo o equilíbrio entre a proteção de dados pessoais, a transparência e o direito à informação.</p>
+            <p><strong>Art. 31º</strong> Compete às Ouvidorias implementar medidas administrativas, organizacionais e tecnológicas para o tratamento seguro dos dados pessoais, observando os princípios de finalidade, adequação, necessidade, livre acesso, qualidade dos dados, transparência, segurança, prevenção, não discriminação, responsabilização e prestação de contas.</p>
+            <p><strong>Art. 32º</strong> A identidade do usuário será protegida mediante solicitação ou quando necessário, salvo nas hipóteses de denunciação caluniosa, má-fé ou demais exceções previstas em lei.</p>
+            <p><strong>Art. 33º</strong> Para preservação do sigilo e da privacidade, poderão ser adotadas técnicas como tarjamentos, descaracterização, anonimização e pseudonimização.</p>
+            <p><strong>Art. 34º</strong> O encaminhamento de manifestações ou denúncias com dados pessoais deverá:</p>
+            <p>I. Obter consentimento expresso do denunciante nas manifestações abertas e sigilosas;</p>
+            <p>II. Aplicar pseudonimização quando não houver consentimento;</p>
+            <p>III. Permitir o envio de denúncias anônimas sem consentimento, desde que preservado o sigilo.</p>
+            <p><strong>Art. 35º</strong> O tratamento de dados deverá restringir-se ao mínimo necessário para o atendimento da manifestação, assegurando sigilo funcional e confidencialidade.</p>
+            <p><strong>Art. 36º</strong> As Ouvidorias deverão:</p>
+            <p>I. Disponibilizar informações claras sobre a coleta, uso e compartilhamento de dados;</p>
+            <p>II. Obter consentimento quando exigido legalmente;</p>
+            <p>III. Responder adequadamente às solicitações relacionadas aos direitos previstos na LGPD;</p>
+            <p>IV. Manter mecanismos de controle, auditoria e mitigação de riscos à privacidade.</p>
+            <p><strong>Art. 37º</strong> O descumprimento deste capítulo será comunicado à Presidência para apuração e adoção das medidas administrativas cabíveis.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo9">
+            <h4>CAPÍTULO IX - DOS RELATÓRIOS INTERNOS</h4>
+            <p><strong>Art. 38º</strong> O(A) Ouvidor(a) elaborará relatórios qualitativos e quantitativos trimestrais, com análises e indicadores sobre as manifestações recebidas.</p>
+            <p>Parágrafo único. O relatório de Ouvidoria deve indicar, ao menos:</p>
+            <p>I. Número de manifestações no período;</p>
+            <p>II. Principais assuntos;</p>
+            <p>III. Quantidade de manifestações não finalizadas por situação;</p>
+            <p>IV. Análise de pontos recorrentes, providências adotadas pela gestão e soluções apresentadas.</p>
+          </div>
+
+          <div class="chapter-content" id="capitulo10">
+            <h4>CAPÍTULO X - DAS DISPOSIÇÕES GERAIS E FINAIS</h4>
+            <p><strong>Art. 39º</strong> Os procedimentos previstos neste Manual deverão ser executados em consonância com os princípios da legalidade, impessoalidade, moralidade, publicidade e eficiência, previstos no art. 37 da Constituição Federal.</p>
+          </div>
+
+          <div class="chapter-content" id="anexo2">
+            <h4>ANEXO II - FLUXO DE TRABALHO DA OUVIDORIA</h4>
+            <p>Este Anexo detalha o fluxo de trabalho padronizado da Ouvidoria, estabelecendo as rotinas administrativas e os métodos de gestão operacional e estratégica para o tratamento das manifestações. O fluxo é composto por três etapas, guiadas pelos métodos DIA, JALECO e PROSA.</p>
+
+            <div class="method-card">
+              <h3><i class="fas fa-calendar-day"></i> I. 1ª Etapa: Método DIA</h3>
+              <p>O Método DIA estabelece a macroestrutura do atendimento diário da Ouvidoria, uniformizando os trâmites internos para assegurar a conformidade com os princípios da eficiência, da legalidade e da boa-fé administrativa.</p>
+              <p>a. Denúncias: manifestações destinadas a relatar irregularidades, ilícitos ou violações éticas e legais no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem. Para fins de habilitação e classificação, deverão atender aos requisitos estabelecidos nos arts. 24º e 25º deste Manual.</p>
+              <p>b. Informações: acompanhamento contínuo de novos atos normativos e administrativos, a fim de assegurar que as informações prestadas aos profissionais e à sociedade sejam atualizadas, corretas e tecnicamente fundamentadas, promovendo a transparência e a conformidade legal, conforme a Lei nº 12.527/2011.</p>
+              <p>c. Acompanhamento das Manifestações: monitoramento integral de todas as manifestações, do recebimento à conclusão. Este acompanhamento garante a responsabilidade, a transparência e o cumprimento dos prazos, fortalecendo a rastreabilidade e a credibilidade institucional.</p>
+            </div>
+
+            <div class="method-card">
+              <h3><i class="fas fa-user-md"></i> II. 2ª Etapa: Método JALECO</h3>
+              <p>O Método JALECO estabelece critérios para a priorização das denúncias, permitindo uma análise direcionada e um encaminhamento eficiente aos setores competentes, conforme a natureza jurídica e a matéria envolvida.</p>
+              <p>a. Judiciais/Jurídicas: denúncias que envolvam questões judicializadas ou com potencial de judicialização, requerendo análise e atuação da assessoria jurídica. O tratamento deve observar os prazos processuais e as orientações legais.</p>
+              <p>b. Assédio/Discriminação/Agressão: denúncias sobre condutas de assédio moral ou sexual, bem como outras formas de agressão no trabalho (física, psicológica/moral, sexual e verbal), quando envolvem usuários e/ou agentes públicos. O tratamento seguirá protocolos internos, garantindo a confidencialidade e a proteção de dados. Podem ser encaminhadas ao Comitê de Prevenção e Enfrentamento ao Assédio e à Discriminação (CPEAD), quando relacionados às relações internas dos agentes públicos dos Conselhos de Enfermagem, ou ao Gabinete da Presidência quando referentes às relações com os Profissionais de Enfermagem e com a sociedade.</p>
+              <p>c. Legislações: denúncias que apontem para o descumprimento de leis, decretos ou outras normas que regem a profissão ou o funcionamento do Sistema Cofen/Conselhos. A análise requer conhecimento da legislação específica e o encaminhamento aos setores de fiscalização.</p>
+              <p>d. Éticas: denúncias que envolvam possíveis infrações ao Código de Ética dos Profissionais de Enfermagem. Devem ser encaminhadas de forma compulsória ao setor competente do respectivo Conselho Regional para análise de admissibilidade, conforme os ritos estabelecidos.</p>
+              <p>e. Conselhos e Conselheiros: denúncias sobre a conduta de Conselhos ou de Conselheiros no exercício de suas funções. Devem ser formalizadas por meio da Ouvidoria e, após o registro, encaminhadas à Presidência do Cofen para as providências cabíveis.</p>
+              <p>f. Outros Demandantes: denúncias apresentadas por usuários que não se enquadrem nas categorias anteriores, mas que possuam relevância para a atuação da Ouvidoria e do Sistema Cofen/Conselhos.</p>
+            </div>
+
+            <div class="method-card">
+              <h3><i class="fas fa-tasks"></i> III. 3ª Etapa: Método PROSA</h3>
+              <p>O Método PROSA orienta a gestão e a execução das manifestações, padronizando os procedimentos internos para a análise técnica e o encaminhamento. O objetivo é assegurar respostas institucionais eficientes e tempestivas, respeitando os prazos e rotinas estabelecidas.</p>
+              <p>a. Prazos: acompanhamento rigoroso dos prazos definidos para cada etapa do tratamento das manifestações, conforme o <strong>Art. 21º</strong> deste Manual.</p>
+              <p>b. Rotina: padronização dos procedimentos internos para o recebimento, registro, triagem, análise e encaminhamento das manifestações.</p>
+              <p>c. Orientações/Outras Demandas: diversas manifestações tais como reclamações, sugestões ou dúvidas, visando reconhecer boas práticas, esclarecer dúvidas e orientar os demandantes.</p>
+              <p>d. Solicitações: demandas técnicas e específicas, como pedidos de pareceres, informações sobre legislações, andamento processual e agendamentos.</p>
+              <p>e. Assuntos Administrativos: manifestações relacionadas a anuidades, inscrições, registros, regularizações e alterações cadastrais.</p>
+            </div>
+          </div>
+
+          <div class="chapter-content" id="anexo3">
+            <h4>ANEXO III - ROTINA DIÁRIA DA OUVIDORIA</h4>
+            <div class="highlight" role="table" aria-label="Rotina diária da Ouvidoria">
+              <table style="width:100%; border-collapse: collapse;">
+                <tr>
+                  <th style="border:1px solid #1a3a6c; padding:8px; background:#f0f4f9;">1ª Etapa</th>
+                  <th style="border:1px solid #1a3a6c; padding:8px; background:#f0f4f9;">Ações</th>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">Início do Expediente</td>
+                  <td style="border:1px solid #1a3a6c; padding:8px;">
+                    <p>- Acesso ao Sistema de Ouvidoria Cofen</p>
+                    <p>- Aplicar o Método DIA (avaliar as manifestações)</p>
+                    <p>1º. Denúncias: verificar novas denúncias recebidas e classificar conforme o método JALECO.</p>
+                    <p>2º. Informações: monitorar novos atos normativos do Sistema Cofen/Coren e pautas sensíveis.</p>
+                    <p>3º. Acompanhamento das Manifestações: status, trâmite e prazos das manifestações não finalizadas:</p>
+                    <p>• A Distribuir • Tramitando • Encaminhadas • Respondidas</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">2ª Etapa</td>
+                  <td style="border:1px solid #1a3a6c; padding:8px;">
+                    <p>- Aplicação do Método JALECO</p>
+                    <p>1º. Judiciais/Jurídicas</p>
+                    <p>2º. Assédio/Discriminação/Agressão</p>
+                    <p>3º. Legislações</p>
+                    <p>4º. Éticas</p>
+                    <p>5º. Conselhos/Conselheiros</p>
+                    <p>6º. Outros Demandantes</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">3ª Etapa</td>
+                  <td style="border:1px solid #1a3a6c; padding:8px;">
+                    <p>- Aplicação do Método PROSA</p>
+                    <p>1º. Prazos</p>
+                    <p>2º. Rotina</p>
+                    <p>3º. Orientações/Outras Demandas</p>
+                    <p>4º. Solicitações/SEI/PAD</p>
+                    <p>5º. Assuntos Administrativos</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">Final do Expediente</td>
+                  <td style="border:1px solid #1a3a6c; padding:8px;">
+                    <ul id="fe-checklist" style="list-style:none;padding-left:0">
+                      <li><label><input type="checkbox" value="finalizar_respondidas"> Avalie e finalize todas as manifestações respondidas.</label></li>
+                      <li><label><input type="checkbox" value="novas_demandas"> Verifique novas demandas (judiciais/assuntos sensíveis).</label></li>
+                      <li><label><input type="checkbox" value="encaminhar_gabinete"> Em casos relevantes, encaminhe ao Gabinete da Presidência.</label></li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="chapter-content" id="anexo4">
+            <h4>ANEXO IV - MODELOS DE DOCUMENTOS</h4>
+            <p>Este anexo contém a representação gráfica do fluxograma de atendimento das manifestações.</p>
+            <div style="text-align:center;margin:20px 0;">
+              <img src="https://raw.githubusercontent.com/Ouvidora-Geral/fluxograma/b7da86e891dca7200adb3790b25e7963916f5579/fluxograma%20ouvidoria.jpg"
+                   alt="Fluxograma de atendimento das manifestações"
+                   style="max-width:100%;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.1);" loading="lazy" decoding="async">
+            </div>
+            <div class="highlight">
+              Legenda do Fluxograma:
+              <ul>
+                <li>Retângulo: Processo ou atividade</li>
+                <li>Paralelepípedo (Documentos/Informações): Subprocesso ou etapa especial</li>
+                <li>Losango: Decisão ou ponto de verificação</li>
+                <li>Elipse: Início/Término de um processo</li>
+                <li>Setas: Direção e fluxo do processo</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="chapter-content" id="anexo5">
+            <h4>ANEXO V - STATUS DAS MANIFESTAÇÕES</h4>
+            <p>Este anexo detalha os status utilizados no acompanhamento das manifestações ao longo do fluxo de trabalho da Ouvidoria.</p>
+            <div class="status-grid">
+              <div class="status-card">
+                <h3>I. A DISTRIBUIR</h3>
+                <p>Manifestação registrada no sistema, ainda não analisada ou triada pela Ouvidoria.</p>
+                <p>Prazo: 10 dias corridos para análise inicial (Art. 21º, §1º)</p>
+              </div>
+              <div class="status-card">
+                <h3>II. TRAMITANDO</h3>
+                <p>Manifestação que aguarda complementação de informações por parte do(a) usuário(a).</p>
+                <p>Prazo: 20 dias corridos para resposta (Art. 22º)</p>
+              </div>
+              <div class="status-card">
+                <h3>III. ENCAMINHADA</h3>
+                <p>Manifestação enviada à área competente, aguardando resposta técnica ou administrativa.</p>
+                <p>Prazo: 15 dias corridos para análise do setor (Art. 21º, §2º)</p>
+              </div>
+              <div class="status-card">
+                <h3>IV. RESPONDIDA</h3>
+                <p>Manifestação com resposta devidamente elaborada, pendente de envio formal.</p>
+                <p>Prazo: 5 dias corridos para envio (Art. 21º, §3º)</p>
+              </div>
+              <div class="status-card">
+                <h3>V. CONCLUÍDA</h3>
+                <p>Manifestação finalizada no sistema. Pode ser reaberta se o processo interno permanecer em tramitação (Art. 18º, V).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tratamento de Denúncias -->
+      <div class="study-section">
+        <div class="section-header" data-section="denuncias">
+          <h2><i class="fas fa-exclamation-triangle"></i> Tratamento de Denúncias</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="denuncias-content">
+          <div class="method-grid">
+            <div class="method-card">
+              <h3><i class="fas fa-clipboard-check"></i> Requisitos para Denúncias</h3>
+              <p>1. Elementos probatórios (fotos, vídeos, documentos) - Art. 25º, §1º, I</p>
+              <p>2. Dados de testemunhas (nome, contato, relato) - Art. 25º, §1º, II</p>
+              <p>3. Informações complementares (data, local, detalhes) - Art. 25º, §1º, III</p>
+              <p>4. Fundamento ético e legal - Art. 27º, §2º</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-user-shield"></i> Proteção do Denunciante</h3>
+              <p>• Identidade protegida mediante solicitação - Art. 32º</p>
+              <p>• Técnicas de anonimização/pseudonimização - Art. 33º</p>
+              <p>• Denúncias anônimas tratadas como comunicação - Art. 27º, §1º</p>
+              <p>• Vedação de retaliação - Art. 29º</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-balance-scale"></i> Fluxo de Apuração</h3>
+              <p>1. Análise de habilitação pela Ouvidoria - Art. 27º</p>
+              <p>2. Encaminhamento à unidade de apuração - Art. 11º, XI</p>
+              <p>3. Resposta conclusiva sobre acolhimento - Art. 28º</p>
+              <p>4. Informação do nº de protocolo SEI/PAD - Art. 20º, Parágrafo único</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proteção de Dados -->
+      <div class="study-section">
+        <div class="section-header" data-section="lgpd">
+          <h2><i class="fas fa-database"></i> Proteção de Dados nas Ouvidorias</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="lgpd-content">
+          <div class="highlight">
+            <p>Princípios aplicáveis (Art. 31º): Finalidade, Necessidade, Livre Acesso, Qualidade dos Dados, Transparência, Segurança, Prevenção e Não Discriminação.</p>
+          </div>
+          <div class="method-grid">
+            <div class="method-card">
+              <h3><i class="fas fa-lock"></i> Medidas de Segurança</h3>
+              <p>• Tarjamento de documentos - Art. 33º</p>
+              <p>• Pseudonimização de dados - Art. 34º, II</p>
+              <p>• Restrição ao mínimo necessário - Art. 35º</p>
+              <p>• Mecanismos de auditoria - Art. 36º, IV</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-id-card"></i> Tratamento Específico</h3>
+              <p>1. Consentimento expresso para dados pessoais - Art. 34º, I</p>
+              <p>2. Denúncias anônimas sem consentimento - Art. 34º, III</p>
+              <p>3. Informações claras sobre coleta - Art. 36º, I</p>
+              <p>4. Resposta a direitos LGPD - Art. 36º, III</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funções e Atribuições -->
+      <div class="study-section">
+        <div class="section-header" data-section="funcoes">
+          <h2><i class="fas fa-tasks"></i> Funções e Atribuições</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="funcoes-content">
+          <div class="method-grid">
+            <div class="method-card">
+              <h3><i class="fas fa-sitemap"></i> Estrutura da Ouvidoria</h3>
+              <p>• Setor administrativo de natureza mediadora - Art. 2º</p>
+              <p>• Subordinação direta à Presidência - Art. 3º</p>
+              <p>• Canais acessíveis e inclusivos - Art. 4º</p>
+              <p>• Infraestrutura adequada para atendimento presencial - Art. 4º, §2º</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-cogs"></i> Atribuições da Ouvidoria-Geral</h3>
+              <p>1. Assegurar a execução das atribuições institucionais - Art. 8º, I</p>
+              <p>2. Propor medidas de aprimoramento ao Plenário do Cofen - Art. 8º, II</p>
+              <p>3. Promover integração entre Ouvidorias Regionais - Art. 8º, III</p>
+              <p>4. Representar institucionalmente a Ouvidoria-Geral - Art. 8º, IV</p>
+              <p>5. Monitorar prazos de resposta - Art. 8º, V</p>
+              <p>6. Prestar apoio técnico às Regionais - Art. 8º, VIII</p>
+              <p>7. Promover capacitação das equipes - Art. 8º, IX</p>
+              <p>8. Emitir relatórios analíticos - Art. 8º, X</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-building"></i> Atribuições das Regionais</h3>
+              <p>1. Receber, registrar e qualificar manifestações - Art. 9º, II</p>
+              <p>2. Promover participação dos usuários - Art. 9º, III</p>
+              <p>3. Acompanhar tratamento das manifestações - Art. 9º, IV</p>
+              <p>4. Facilitar acesso às informações - Art. 9º, VI</p>
+              <p>5. Acompanhar Carta de Serviços - Art. 9º, VII</p>
+              <p>6. Processar informações para melhoria - Art. 9º, VIII</p>
+              <p>7. Emitir relatórios à Presidência - Art. 9º, IX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atribuições do Ouvidor -->
+      <div class="study-section">
+        <div class="section-header" data-section="ouvidor">
+          <h2><i class="fas fa-user-tie"></i> Atribuições do Ouvidor</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="ouvidor-content">
+          <div class="method-grid">
+            <div class="method-card">
+              <h3><i class="fas fa-bullhorn"></i> Responsabilidades Principais</h3>
+              <p>1. Liderar, coordenar e supervisionar - Art. 10º</p>
+              <p>2. Ser elo entre sociedade e Sistema - Art. 10º</p>
+              <p>3. Garantir canal de comunicação eficiente - Art. 10º</p>
+              <p>4. Promover diálogo construtivo - Art. 10º</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-clipboard-list"></i> Atribuições Específicas</h3>
+              <p>1. Receber, analisar e encaminhar manifestações - Art. 10º, I</p>
+              <p>2. Garantir proteção dos direitos - Art. 10º</p>
+              <p>3. Estimular transparência institucional - Art. 10º, II</p>
+              <p>4. Acompanhar Reuniões do Plenário - Art. 10º, III</p>
+              <p>5. Informar sobre prazos excedidos - Art. 10º, IV</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-user-check"></i> Competências Desejáveis</h3>
+              <p>1. Curso de Capacitação em Ouvidoria - Art. 14º, I</p>
+              <p>2. Responsabilidade e discrição - Art. 14º, III</p>
+              <p>3. Habilidades de comunicação empática - Art. 14º, V</p>
+              <p>4. Conhecimento do Sistema Cofen/Conselhos - Art. 14º, VII</p>
+              <p>5. Atualização sobre legislações - Art. 14º, VI</p>
+              <p>6. Probidade e credibilidade - Art. 14º, II</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Métodos Mnemônicos -->
+      <div class="study-section">
+        <div class="section-header" data-section="metodos">
+          <h2><i class="fas fa-lightbulb"></i> Métodos Mnemônicos</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="metodos-content">
+          <div class="method-grid">
+            <div class="method-card">
+              <h3><i class="fas fa-calendar-day"></i> Método DIA</h3>
+              <p>D: Denúncias - Relato formal de atos ilícitos ou irregularidades (Anexo II, I.a)</p>
+              <p>I: Informações - Acompanhamento de legislações e normativos (Anexo II, I.b)</p>
+              <p>A: Acompanhamento - Monitoramento de todas as etapas (Anexo II, I.c)</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-user-md"></i> Método JALECO</h3>
+              <p>J: Judiciais/Jurídicas - Questões judicializadas (Anexo II, II.a)</p>
+              <p>A: Assédio/Agressão - Moral, sexual ou psicológica (Anexo II, II.b)</p>
+              <p>L: Legislações - Descumprimento de normas (Anexo II, II.c)</p>
+              <p>E: Éticas - Infrações ao Código de Ética (Anexo II, II.d)</p>
+              <p>C: Conselhos/Conselheiros - Conduta de membros do Sistema (Anexo II, II.e)</p>
+              <p>O: Outros Demandantes - Demais manifestações relevantes (Anexo II, II.f)</p>
+            </div>
+            <div class="method-card">
+              <h3><i class="fas fa-tasks"></i> Método PROSA</h3>
+              <p>P: Prazos - Acompanhamento dos prazos legais (Anexo II, III.a)</p>
+              <p>R: Rotina - Padronização de procedimentos (Anexo II, III.b)</p>
+              <p>O: Orientações - Elogios, reclamações, dúvidas (Anexo II, III.c)</p>
+              <p>S: Solicitações/SEI - Pedidos específicos (Anexo II, III.d)</p>
+              <p>A: Assuntos Administrativos - Anuidades, inscrições (Anexo II, III.e)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status das Manifestações (resumo) -->
+      <div class="study-section">
+        <div class="section-header" data-section="status">
+          <h2><i class="fas fa-clipboard-list"></i> Status das Manifestações</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="status-content">
+          <div class="status-grid">
+            <div class="status-card">
+              <h3>I. A DISTRIBUIR</h3>
+              <p>Manifestação registrada no sistema, ainda não analisada ou triada pela Ouvidoria.</p>
+              <p>Prazo: 10 dias corridos (Art. 21º, §1º).</p>
+            </div>
+            <div class="status-card">
+              <h3>II. TRAMITANDO</h3>
+              <p>Aguardando complementação do(a) usuário(a). Prazo suspenso.</p>
+              <p>Prazo do usuário(a): 20 dias (Art. 22º).</p>
+            </div>
+            <div class="status-card">
+              <h3>III. ENCAMINHADA</h3>
+              <p>Enviada à área competente, aguardando resposta.</p>
+              <p>Prazo do setor: 15 dias (Art. 21º, §2º).</p>
+            </div>
+            <div class="status-card">
+              <h3>IV. RESPONDIDA</h3>
+              <p>Resposta elaborada, pendente de envio formal.</p>
+              <p>Prazo da Ouvidoria: 5 dias (Art. 21º, §3º).</p>
+            </div>
+            <div class="status-card">
+              <h3>V. CONCLUÍDA</h3>
+              <p>Resposta enviada e registro finalizado. Pode ser reaberta conforme o processo interno.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fluxo das Manifestações -->
+      <div class="study-section">
+        <div class="section-header" data-section="fluxo">
+          <h2><i class="fas fa-project-diagram"></i> Fluxo das Manifestações</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="fluxo-content">
+          <div class="interactive-diagram">
+            <div class="flow-step" data-step="registro">Registro</div>
+            <div class="flow-step" data-step="triagem">Triagem</div>
+            <div class="flow-step" data-step="complementacao">Complementação</div>
+            <div class="flow-step" data-step="encaminhamento">Encaminhamento</div>
+            <div class="flow-step" data-step="resposta">Resposta</div>
+            <div class="flow-step" data-step="conclusao">Conclusão</div>
+          </div>
+          <div id="flow-info" class="highlight" style="display: none;">
+            <h3 id="flow-title">Título do Fluxo</h3>
+            <p id="flow-description">Descrição do passo do fluxo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prazos do Sistema -->
+      <div class="study-section">
+        <div class="section-header" data-section="prazos">
+          <h2><i class="fas fa-clock"></i> Prazos do Sistema</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="prazos-content">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Prazo Total</h3>
+                <p>30 dias corridos para resposta conclusiva a partir do registro, prorrogável por mais 30 dias em casos de maior complexidade (Art. 20º).</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Análise Inicial</h3>
+                <p>10 dias corridos para análise inicial, classificação e encaminhamento ao setor competente (Art. 21º, §1º).</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Análise Administrativa</h3>
+                <p>15 dias corridos para os setores administrativos analisarem e deliberarem sobre a demanda (Art. 21º, §2º).</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Resposta Final</h3>
+                <p>5 dias corridos para análise final e envio da resposta ao(à) manifestante após recebimento do setor (Art. 21º, §3º).</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Complementação de Dados</h3>
+                <p>20 dias corridos para o(a) manifestante complementar informações, prorrogáveis por mais 10 dias mediante justificativa (Art. 22º).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legislação Relevante -->
+      <div class="study-section">
+        <div class="section-header" data-section="legislacao">
+          <h2><i class="fas fa-gavel"></i> Legislação Relevante</h2>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="section-content" id="legislacao-content">
+          <div class="legislation-list">
+            <div class="legislation-item">
+              <i class="fas fa-book"></i>
+              <div>
+                <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13460.htm" target="_blank" rel="noopener">Lei nº 13.460/2017</a></h3>
+                <p>Dispõe sobre participação, proteção e defesa dos direitos do usuário dos serviços públicos.</p>
+              </div>
+            </div>
+            <div class="legislation-item">
+              <i class="fas fa-book"></i>
+              <div>
+                <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">Lei nº 13.709/2018 (LGPD)</a></h3>
+                <p>Lei Geral de Proteção de Dados Pessoais.</p>
+              </div>
+            </div>
+            <div class="legislation-item">
+              <i class="fas fa-book"></i>
+              <div>
+                <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target="_blank" rel="noopener">Lei nº 12.527/2011 (LAI)</a></h3>
+                <p>Lei de Acesso à Informação.</p>
+              </div>
+            </div>
+            <div class="legislation-item">
+              <i class="fas fa-book"></i>
+              <div>
+                <h3><a href="http://www.planalto.gov.br/ccivil_03/leis/l5905.htm" target="_blank" rel="noopener">Lei nº 5.905/1973</a></h3>
+                <p>Cria os Conselhos Federal e Regionais de Enfermagem.</p>
+              </div>
+            </div>
+            <div class="legislation-item">
+              <i class="fas fa-book"></i>
+              <div>
+                <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9492.htm" target="_blank" rel="noopener">Decreto nº 9.492/2018</a></h3>
+                <p>Regulamenta a Lei nº 13.460/2017 sobre Ouvidorias.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /study-tab -->
+
+    <!-- TAB: Quiz -->
+    <div class="tab-content" id="quiz-tab" role="tabpanel" aria-labelledby="tab-quiz">
+      <div class="quiz-intro">
+        <h2>Teste Seu Conhecimento</h2>
+        <p>Avalie sua compreensão sobre o Manual Nacional das Ouvidorias do Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
+        <p>Selecione um nível de dificuldade para começar:</p>
+        <div class="difficulty-selector">
+          <button class="level-btn easy" data-level="easy">Fácil</button>
+          <button class="level-btn medium" data-level="medium">Médio</button>
+          <button class="level-btn hard" data-level="hard">Difícil</button>
+          <button class="level-btn expert" data-level="expert">Expert</button>
+        </div>
+      </div>
+
+      <div class="quiz-container" aria-live="polite">
+        <div class="question-header">
+          <div class="question-counter">Pergunta <span id="current">1</span> de <span id="total">5</span></div>
+          <div class="score">Pontuação: <span id="score">0</span></div>
+        </div>
+
+        <div class="progress-bar"><div class="progress" id="progress" style="width:0%"></div></div>
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+
+        <div class="navigation">
+          <button class="nav-btn" id="prev-btn" disabled>Anterior</button>
+          <button class="nav-btn" id="next-btn">Próxima</button>
+        </div>
+      </div>
+
+      <div id="quiz-result" class="result-container" style="display:none;">
+        <h3 class="result-title">Seu Desempenho</h3>
+        <div class="result-visual">
+          <div class="result-circle" id="result-circle">
+            <div class="result-inner">
+              <div class="result-percent" id="result-percent">0%</div>
+              <div class="result-label">de acerto</div>
+            </div>
+          </div>
+        </div>
+        <div class="result-feedback" id="result-feedback"></div>
+        <div class="result-stars" id="result-stars"></div>
+        <div id="feedback">
+          <h3>Resumo das Respostas</h3>
+          <div id="feedback-content"></div>
+        </div>
+        <button class="restart-btn" onclick="restartQuiz()">Fazer Novamente</button>
+      </div>
+    </div>
+
+    <!-- TAB: PodeOuvir -->
+    <div class="tab-content" id="pode-ouvir-tab" role="tabpanel" aria-labelledby="tab-pode-ouvir">
+      <div class="pode-ouvir-container">
+        <h2><i class="fas fa-volume-up"></i> PodeOuvir!</h2>
+        <p>Acesse o conteúdo de áudio da Ouvidora Geral para ouvir informações importantes sobre o Manual Nacional das Ouvidorias.</p>
+        <iframe src="https://ouvidora-geral.github.io/PodeOuvir/" title="PodeOuvir - Conteúdo de Áudio da Ouvidora Geral"></iframe>
+        <div class="pode-ouvir-info">
+          <h3><i class="fas fa-info-circle"></i> Informações Importantes</h3>
+          <p>Este conteúdo de áudio é disponibilizado pela Ouvidora Geral do Cofen e contém orientações, explicações e detalhes sobre a implementação do Manual Nacional das Ouvidorias.</p>
+          <p>Recomendamos o uso de fones de ouvido para uma melhor experiência auditiva.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="credits">
+      <p>Desenvolvido por: Eduardo Fernando de Souza</p>
+      <p>GUIA DO OUVIDOR - 2025</p>
+      <p>Versão: DEMO | Setembro 2025</p>
+    </div>
+  </div>
+
+<script>
+/* ====== Preferência de tema com persistência ====== */
+(function(){
+  const btn = document.getElementById('themeToggle');
+  const apply = (theme) => {
+    document.body.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
+  };
+  const stored = localStorage.getItem('theme');
+  if (stored) apply(stored);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) apply('dark');
+
+  btn.addEventListener('click', () => {
+    const now = document.body.classList.contains('dark') ? 'light' : 'dark';
+    apply(now);
+  });
+})();
+
+/* ====== Sistema de abas com ARIA + teclado ====== */
+(function(){
+  const tabBtns = document.querySelectorAll('.tabs [role="tab"]');
+  const tabPanels = document.querySelectorAll('.tab-content');
+
+  function activateTab(btn) {
+    tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    tabPanels.forEach(p => p.classList.remove('active'));
+
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
+    const id = btn.getAttribute('data-tab');
+    const panel = document.getElementById(id + '-tab');
+    if (panel) panel.classList.add('active');
+
+    // se for Quiz, reset
+    if (id === 'quiz') resetQuiz();
+  }
+
+  tabBtns.forEach((btn, idx) => {
+    btn.addEventListener('click', () => activateTab(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        const next = (idx + dir + tabBtns.length) % tabBtns.length;
+        tabBtns[next].focus();
+      }
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateTab(btn);
+      }
+    });
+  });
+})();
+
+/* ====== Acordeões das seções ====== */
+(function(){
+  function toggleSection(sectionId) {
+    const content = document.getElementById(sectionId + '-content');
+    if (!content) return;
+    const icon = content.previousElementSibling.querySelector('.fa-chevron-down, .fa-chevron-up');
+    content.classList.toggle('active');
+    if (icon) icon.classList.toggle('fa-chevron-up');
+  }
+  document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => toggleSection(header.dataset.section));
+  });
+
+  // Abre o Manual por padrão
+  toggleSection('Manual');
+})();
+
+/* ====== Abas de capítulos + link profundo ====== */
+(function(){
+  const tabs = document.querySelectorAll('.chapter-tab');
+  const contents = document.querySelectorAll('.chapter-content');
+
+  function openChapter(id, pushHash=true) {
+    tabs.forEach(t => {
+      const match = t.getAttribute('data-chapter') === id;
+      t.classList.toggle('active', match);
+      t.setAttribute('aria-selected', match ? 'true' : 'false');
+    });
+    contents.forEach(c => c.classList.toggle('active', c.id === id));
+    if (pushHash) {
+      const url = new URL(window.location);
+      url.hash = 'chapter=' + id + (currentQuery ? '&query=' + encodeURIComponent(currentQuery) : '');
+      history.replaceState(null, '', url);
+    }
+    // rolar para o topo do capítulo
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    // reexecuta o destaque da busca no novo capítulo
+    highlightQuery(currentQuery);
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => openChapter(tab.dataset.chapter));
+  });
+
+  // Deep link na carga
+  let targetChapter = 'capitulo1';
+  let currentQuery = '';
+  if (location.hash.includes('chapter=')) {
+    try {
+      const params = new URLSearchParams(location.hash.replace('#',''));
+      targetChapter = params.get('chapter') || targetChapter;
+      currentQuery = params.get('query') || '';
+    } catch(e){}
+  }
+  openChapter(targetChapter, false);
+
+  // Expor para outros scripts
+  window.__openChapter = openChapter;
+  window.__setQuery = (q)=>{ currentQuery = q; };
+  window.__getQuery = ()=> currentQuery;
+})();
+
+/* ====== Busca com destaque + compartilhar ====== */
+(function(){
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('searchClear');
+  const shareBtn = document.getElementById('shareLink');
+  const countSpan = document.getElementById('searchCount');
+
+  function removeMarks(scope){
+    scope.querySelectorAll('mark').forEach(m=>{
+      const text = document.createTextNode(m.textContent);
+      m.parentNode.replaceChild(text, m);
+      m.parentNode.normalize();
+    });
+  }
+
+  function highlight(text, scope){
+    if (!text) return 0;
+    // varre nós de texto
+    const walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        const tag = node.parentNode && node.parentNode.nodeName;
+        if (['SCRIPT','STYLE','NOSCRIPT','CODE','PRE','TEXTAREA','INPUT','IFRAME'].includes(tag)) return NodeFilter.FILTER_REJECT;
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let count = 0;
+    const regex = new RegExp(text.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+    const toProcess = [];
+    while (walker.nextNode()) toProcess.push(walker.currentNode);
+
+    toProcess.forEach(node=>{
+      const frag = document.createDocumentFragment();
+      let str = node.nodeValue;
+      let lastIdx = 0;
+      let m;
+      regex.lastIndex = 0;
+      while ((m = regex.exec(str))){
+        const before = str.slice(lastIdx, m.index);
+        const match = m[0];
+        if (before) frag.appendChild(document.createTextNode(before));
+        const mark = document.createElement('mark');
+        mark.textContent = match;
+        frag.appendChild(mark);
+        lastIdx = m.index + match.length;
+        count++;
+      }
+      if (count && lastIdx < str.length){
+        frag.appendChild(document.createTextNode(str.slice(lastIdx)));
+      }
+      if (count && frag.childNodes.length){
+        node.parentNode.replaceChild(frag, node);
+      }
+    });
+    return count;
+  }
+
+  function activeChapterEl(){
+    return document.querySelector('.chapter-content.active') || document.getElementById('capitulo1');
+  }
+
+  function highlightQuery(q){
+    const scope = activeChapterEl();
+    if (!scope) return;
+    removeMarks(scope);
+    if (!q){ countSpan.textContent=''; return; }
+    const total = highlight(q, scope);
+    countSpan.textContent = total ? `${total} ocorrência(s)` : '0 ocorrências';
+  }
+
+  input.addEventListener('input', (e)=>{
+    const q = e.target.value.trim();
+    window.__setQuery(q);
+    highlightQuery(q);
+  });
+  clearBtn.addEventListener('click', ()=>{
+    input.value='';
+    window.__setQuery('');
+    highlightQuery('');
+  });
+
+  // restaurar query da hash
+  const queryFromHash = window.__getQuery();
+  if (queryFromHash){
+    input.value = queryFromHash;
+    highlightQuery(queryFromHash);
+  }
+
+  shareBtn.addEventListener('click', async ()=>{
+    const chapter = document.querySelector('.chapter-tab.active')?.dataset.chapter || 'capitulo1';
+    const q = (document.getElementById('searchInput').value || '').trim();
+    const url = new URL(location.href);
+    url.hash = 'chapter=' + chapter + (q ? '&query=' + encodeURIComponent(q) : '');
+    try{
+      if (navigator.share){
+        await navigator.share({title:document.title, url:url.toString()});
+      } else if (navigator.clipboard){
+        await navigator.clipboard.writeText(url.toString());
+        shareBtn.textContent = 'Copiado!';
+        setTimeout(()=>shareBtn.innerHTML = '<i class="fas fa-share-from-square"></i> Compartilhar', 1200);
+      }
+    }catch(e){}
+  });
+
+  // exporta para reuso
+  window.highlightQuery = highlightQuery;
+})();
+
+/* ====== Checklist do fim do expediente (persistência diária) ====== */
+(function(){
+  const list = document.getElementById('fe-checklist');
+  if (!list) return;
+  const key = 'fe-checklist-' + new Date().toISOString().slice(0,10); // YYYY-MM-DD
+  const stored = JSON.parse(localStorage.getItem(key) || '{}');
+  list.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
+    cb.checked = !!stored[cb.value];
+    cb.addEventListener('change', ()=>{
+      stored[cb.value] = cb.checked;
+      localStorage.setItem(key, JSON.stringify(stored));
+    });
+  });
+})();
+
+/* ====== Fluxo: descrição dinâmica ====== */
+(function(){
+  const info = {
+    registro: {
+      t:'Registro da Manifestação',
+      d:'A manifestação é registrada no sistema oficial de Ouvidoria, devendo conter: data, identificação completa do(a) manifestante, tipo de manifestação e descrição detalhada (Art. 16º, §4º).'
+    },
+    triagem: {
+      t:'Triagem e Classificação',
+      d:'A Ouvidoria realiza análise preliminar para verificar adequação, competência e objeto da manifestação no prazo de 10 dias corridos (Art. 21º, §1º).'
+    },
+    complementacao: {
+      t:'Solicitação de Complementação',
+      d:'Quando necessário, a Ouvidoria solicita informações adicionais, suspendendo o prazo por 20 dias corridos (prorrogáveis por 10). Não atendido, a manifestação pode ser arquivada (Art. 22º).'
+    },
+    encaminhamento: {
+      t:'Encaminhamento',
+      d:'A manifestação é enviada à unidade de apuração/área competente, que terá 15 dias corridos para análise (Art. 21º, §2º).'
+    },
+    resposta: {
+      t:'Resposta Técnica',
+      d:'A Ouvidoria analisa a resposta do setor em até 5 dias corridos, garantindo clareza, linguagem cidadã e fundamentação (Art. 19º e Art. 21º, §3º).'
+    },
+    conclusao: {
+      t:'Conclusão',
+      d:'A manifestação é finalizada após envio da resposta. Pode ser reaberta caso o processo interno siga em tramitação (Art. 18º, V).'
+    }
+  };
+  const title = document.getElementById('flow-title');
+  const desc = document.getElementById('flow-description');
+  const box = document.getElementById('flow-info');
+  document.querySelectorAll('.flow-step').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const step = btn.dataset.step;
+      const it = info[step];
+      if (!it) return;
+      title.textContent = it.t;
+      desc.textContent = it.d;
+      box.style.display = 'block';
+      box.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  });
+})();
+
+/* ====== Quiz ====== */
+const quizData = {
+  easy: [
+    {question:"Qual o prazo total para resposta conclusiva às manifestações?",options:["15 dias","30 dias","45 dias","60 dias"],answer:1,reference:"Art. 20º"},
+    {question:"A quem a Ouvidoria deve estar subordinada?",options:["À Presidência da Autarquia","Ao setor jurídico","À Comissão de Ética","Ao Plenário do Cofen"],answer:0,reference:"Art. 3º"},
+    {question:"Qual método classifica as denúncias por tipo?",options:["DIA","JALECO","PROSA","Nenhum dos anteriores"],answer:1,reference:"Anexo II, II"},
+    {question:"O que significa 'A' no método DIA?",options:["Audiência","Acompanhamento","Análise","Atendimento"],answer:1,reference:"Anexo II, I.c"},
+    {question:"Qual status indica manifestação aguardando complementação?",options:["A DISTRIBUIR","TRAMITANDO","ENCAMINHADA","RESPONDIDA"],answer:1,reference:"Art. 18º, II"}
+  ],
+  medium: [
+    {question:"Qual artigo trata da proteção de dados pessoais nas Ouvidorias?",options:["Art. 10º","Art. 25º","Art. 30º","Art. 35º"],answer:2,reference:"Capítulo VIII"},
+    {question:"Sobre denúncias anônimas, é correto afirmar:",options:["Devem ser automaticamente arquivadas","São tratadas como comunicação de irregularidade","Exigem identificação completa do denunciante","Têm prioridade no fluxo de análise"],answer:1,reference:"Art. 27º, §1º"},
+    {question:"Qual destes NÃO é requisito para denúncias?",options:["Elementos probatórios","Dados de testemunhas","Representação por advogado","Informações complementares"],answer:2,reference:"Art. 25º, §1º"},
+    {question:"O método PROSA inclui:",options:["Priorização de denúncias","Acompanhamento de prazos","Classificação por assunto","Análise de documentos"],answer:1,reference:"Anexo II, III.a"},
+    {question:"Qual técnica é usada para proteção de dados?",options:["Tarjamento","Criptografia reversível","Compactação","Digitalização"],answer:0,reference:"Art. 33º"}
+  ],
+  hard: [
+    {question:"Quantos dias tem o(a) manifestante para complementar informações?",options:["5 dias","10 dias","15 dias","20 dias"],answer:3,reference:"Art. 22º, §1º"},
+    {question:"O que acontece se o(a) manifestante não complementar no prazo?",options:["A manifestação é encaminhada sem análise","É arquivada por insuficiência","O prazo é automaticamente prorrogado","A Ouvidoria busca as informações"],answer:1,reference:"Art. 22º, §3º"},
+    {question:"Para qual instância são encaminhadas denúncias sobre Conselheiros?",options:["Comissão de Ética","Presidência do Cofen","Corregedoria","Assessoria Jurídica"],answer:1,reference:"Anexo II, II.e"},
+    {question:"Qual princípio NÃO se aplica ao tratamento de denúncias?",options:["Legalidade","Proteção de dados","Sigilo absoluto","Respeito à dignidade"],answer:2,reference:"Art. 24º"},
+    {question:"Quando uma manifestação pode ser reaberta após conclusão?",options:["Quando o(a) manifestante solicitar","Se o processo interno continuar em tramitação","Em casos de recursos administrativos","Para correção de erros materiais"],answer:1,reference:"Art. 18º, V"}
+  ],
+  expert: [
+    {question:"Qual decreto regulamenta a Lei 13.460/2017 no âmbito federal?",options:["Decreto 7.724/2012","Decreto 9.094/2017","Decreto 9.492/2018","Decreto 10.890/2021"],answer:2,reference:"Decreto 9.492/2018"},
+    {question:"Qual artigo estabelece as competências do Ouvidor?",options:["Art. 7º","Art. 10º","Art. 14º","Art. 18º"],answer:1,reference:"Capítulo IV"},
+    {question:"Quantas etapas tem o fluxo de trabalho da Ouvidoria?",options:["2 etapas","3 etapas","4 etapas","5 etapas"],answer:1,reference:"Anexo II"},
+    {question:"Qual destes NÃO é status de manifestação?",options:["EM ANÁLISE","TRAMITANDO","ENCAMINHADA","CONCLUÍDA"],answer:0,reference:"Anexo V"},
+    {question:"Quem designa o Ouvidor Regional?",options:["Plenário do Cofen","Presidência do Conselho Regional","Ouvidor-Geral do Cofen","Assembleia Geral"],answer:1,reference:"Art. 12º"}
+  ]
+};
+const difficultyScreen = document.querySelector('.quiz-intro');
+const quizScreen = document.querySelector('.quiz-container');
+const resultsScreen = document.getElementById('quiz-result');
+const levelButtons = document.querySelectorAll('.level-btn');
+const questionElement = document.getElementById('question');
+const optionsElement = document.getElementById('options');
+const currentElement = document.getElementById('current');
+const totalElement = document.getElementById('total');
+const scoreElement = document.getElementById('score');
+const resultPercentElement = document.getElementById('result-percent');
+const resultCircle = document.getElementById('result-circle');
+const resultFeedback = document.getElementById('result-feedback');
+const resultStars = document.getElementById('result-stars');
+const prevButton = document.getElementById('prev-btn');
+const nextButton = document.getElementById('next-btn');
+const progressBar = document.getElementById('progress');
+
+let currentLevel = '';
+let currentQuestions = [];
+let currentQuestionIndex = 0;
+let userScore = 0;
+let userAnswers = [];
+let selectedOption = null;
+let autoAdvanceTimeout = null;
+
+function getRandomQuestions(level, count) {
+  const all = [...quizData[level]];
+  for (let i=all.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [all[i],all[j]]=[all[j],all[i]]; }
+  return all.slice(0, count);
+}
+
+levelButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    currentLevel = button.getAttribute('data-level');
+    startQuiz(currentLevel);
+  });
+});
+
+function resetQuiz() {
+  difficultyScreen.style.display = 'block';
+  quizScreen.style.display = 'none';
+  resultsScreen.style.display = 'none';
+  clearAutoAdvance();
+}
+
+function clearAutoAdvance() {
+  if (autoAdvanceTimeout) { clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null; }
+}
+
+function startQuiz(level) {
+  currentQuestions = getRandomQuestions(level, 5);
+  currentQuestionIndex = 0;
+  userScore = 0;
+  userAnswers = [];
+  difficultyScreen.style.display = 'none';
+  quizScreen.style.display = 'block';
+  resultsScreen.style.display = 'none';
+  updateQuestion();
+  updateProgress();
+}
+
+function updateQuestion() {
+  const q = currentQuestions[currentQuestionIndex];
+  questionElement.textContent = q.question;
+  optionsElement.innerHTML = '';
+  currentElement.textContent = currentQuestionIndex + 1;
+  totalElement.textContent = currentQuestions.length;
+  scoreElement.textContent = userScore;
+
+  q.options.forEach((opt, idx) => {
+    const el = document.createElement('div');
+    el.classList.add('option');
+    el.setAttribute('role','button');
+    el.setAttribute('tabindex','0');
+    el.textContent = opt;
+
+    if (userAnswers[currentQuestionIndex] === idx) {
+      el.classList.add('selected');
+      selectedOption = el;
+      if (userAnswers[currentQuestionIndex] !== undefined) showAnswerFeedback();
+    }
+
+    el.addEventListener('click', ()=> selectOption(el, idx));
+    el.addEventListener('keydown', (e)=>{ if (e.key==='Enter' || e.key===' ') { e.preventDefault(); selectOption(el, idx); }});
+    optionsElement.appendChild(el);
+  });
+
+  prevButton.disabled = currentQuestionIndex === 0;
+  nextButton.textContent = currentQuestionIndex === currentQuestions.length - 1 ? 'Finalizar' : 'Próxima';
+}
+
+function selectOption(optionElement, optionIndex) {
+  if (userAnswers[currentQuestionIndex] !== undefined) return;
+  if (selectedOption) selectedOption.classList.remove('selected');
+  optionElement.classList.add('selected');
+  selectedOption = optionElement;
+  userAnswers[currentQuestionIndex] = optionIndex;
+  showAnswerFeedback();
+  clearAutoAdvance();
+  autoAdvanceTimeout = setTimeout(() => {
+    if (currentQuestionIndex < currentQuestions.length - 1) {
+      currentQuestionIndex++;
+      updateQuestion();
+      updateProgress();
+    } else {
+      showResults();
+    }
+  }, 900);
+}
+
+function showAnswerFeedback() {
+  const q = currentQuestions[currentQuestionIndex];
+  const opts = optionsElement.querySelectorAll('.option');
+  const answer = userAnswers[currentQuestionIndex];
+
+  opts.forEach((op, idx)=>{
+    op.classList.remove('correct','incorrect');
+    if (idx === q.answer) op.classList.add('correct');
+    else if (idx === answer && idx !== q.answer) op.classList.add('incorrect');
+  });
+
+  if (answer === q.answer && !q.answered) {
+    userScore++;
+    q.answered = true;
+    scoreElement.textContent = userScore;
+  }
+}
+
+function updateProgress() {
+  const progress = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
+  progressBar.style.width = progress + '%';
+}
+
+nextButton.addEventListener('click', () => {
+  clearAutoAdvance();
+  if (currentQuestionIndex < currentQuestions.length - 1) {
+    currentQuestionIndex++;
+    updateQuestion();
+    updateProgress();
+  } else {
+    showResults();
+  }
+});
+prevButton.addEventListener('click', () => {
+  clearAutoAdvance();
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    updateQuestion();
+    updateProgress();
+  }
+});
+
+function showResults() {
+  const finalScore = Math.round((userScore / currentQuestions.length) * 100);
+  quizScreen.style.display = 'none';
+  resultsScreen.style.display = 'block';
+  resultPercentElement.textContent = finalScore + '%';
+  resultCircle.style.setProperty('--percentage', finalScore + '%');
+
+  if (finalScore >= 90) {
+    resultFeedback.textContent = "Excelente! Domínio completo do Manual das Ouvidorias.";
+    resultStars.innerHTML = '★★★★★'.replace(/./g, (c,i)=>'<i class="fas fa-star"></i>');
+  } else if (finalScore >= 70) {
+    resultFeedback.textContent = "Muito bom! Bom conhecimento dos procedimentos.";
+    resultStars.innerHTML = '<i class="fas fa-star"></i>'.repeat(4) + '<i class="far fa-star"></i>';
+  } else if (finalScore >= 50) {
+    resultFeedback.textContent = "Bom! Revise os pontos de melhoria.";
+    resultStars.innerHTML = '<i class="fas fa-star"></i>'.repeat(3) + '<i class="far fa-star"></i>'.repeat(2);
+  } else {
+    resultFeedback.textContent = "Continue estudando! Consulte o Material de Estudo.";
+    resultStars.innerHTML = '<i class="fas fa-star"></i>'.repeat(2) + '<i class="far fa-star"></i>'.repeat(3);
+  }
+  generateMethodFeedback();
+}
+
+function generateMethodFeedback() {
+  const box = document.getElementById('feedback-content');
+  let html = '';
+  currentQuestions.forEach((q, i)=>{
+    const ua = userAnswers[i];
+    const ok = ua === q.answer;
+    html += `
+      <div class="feedback-item">
+        <div class="feedback-question">${i+1}. ${q.question}</div>
+        <div class="feedback-answer ${ok ? 'correct-answer':'incorrect-answer'}">
+          Sua resposta: ${q.options[ua] ?? '-'}
+          <i class="fas fa-${ok ? 'check':'times'} feedback-icon"></i>
+        </div>
+        ${!ok ? `
+        <div class="feedback-answer correct-answer">
+          Resposta correta: ${q.options[q.answer]}
+          <i class="fas fa-check feedback-icon"></i>
+          <p><small>Referência: ${q.reference}</small></p>
+        </div>`:''}
+      </div>`;
+  });
+  box.innerHTML = html;
+}
+
+function restartQuiz(){
+  resultsScreen.style.display = 'none';
+  difficultyScreen.style.display = 'block';
+  startQuiz(currentLevel);
+}
+
+/* ====== Ajustes finais: abrir capítulo da hash no clique interno ====== */
+document.addEventListener('click', (e)=>{
+  const t = e.target.closest('.chapter-tab');
+  if (t) {
+    const chap = t.dataset.chapter;
+    if (chap) window.__openChapter(chap);
+  }
+});
+</script>
+</body>
+</html>
