@@ -1107,6 +1107,83 @@
   text-align: center;
 }
 .pode-ouv-scope .podcast-toast.show{ display:block; animation: fadeInUp .25s ease forwards; }
+</style><style>
+/* ====== Responsividade: smartphone e desktop (sem alterar layout/cores/animações) ====== */
+:root{
+  --touch-target: 44px; /* tamanho mínimo recomendado */
+}
+/* base */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, video, canvas { max-width: 100%; height: auto; }
+audio { width: 100%; }
+
+/* containers principais */
+.container, .app-container { width: min(1200px, 100%); margin: 0 auto; padding-left: 12px; padding-right: 12px; }
+.card, .section-card { border-radius: 18px; }
+
+/* navegação principal (abas) */
+.nav, .tabs-nav, .main-nav, .pode-ouvir-container nav {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.nav [data-tab], .tabs-nav button, .pode-ouvir-container nav button, .legislation-sub-tabs .leg-sub-btn {
+  min-height: var(--touch-target);
+  line-height: 1.2;
+  padding: 10px 14px;
+}
+
+/* cabeçalhos de acordeão */
+.section-header {
+  min-height: var(--touch-target);
+  line-height: 1.2;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+}
+.section-header i { flex: 0 0 auto; }
+
+/* legislação */
+.search-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
+#legislation-search { flex: 1 1 320px; min-width: 220px; }
+.legislation-list { display: flex; flex-direction: column; gap: 12px; }
+.legislation-item { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.legislation-item a { word-break: break-word; overflow-wrap: anywhere; }
+.leg-search-results { margin-top: 8px; }
+.leg-results-list .legislation-item { padding-top: 10px; padding-bottom: 10px; }
+
+/* PodeOuvir - container responsivo */
+.pode-ouv-scope .pode-ouvir-container { padding: clamp(16px, 3vw, 30px); }
+.pode-ouv-scope .logo { max-width: clamp(200px, 60vw, 350px); height: auto; }
+.pode-ouv-scope .player { padding: clamp(14px, 3vw, 25px); }
+.pode-ouv-scope .player-controls { flex-wrap: wrap; justify-content: center; gap: 12px; }
+.pode-ouv-scope .play-btn { width: 52px; height: 52px; }
+.pode-ouv-scope .volume-slider { width: clamp(120px, 40vw, 200px); }
+.pode-ouv-scope .progress-container { height: 10px; }
+.pode-ouv-scope .podcast-tab-content { width: min(720px, 100%); margin: 0 auto; }
+
+/* Quiz: botões tocáveis */
+#quiz-tab .diff-btn, .diff-btn { min-height: var(--touch-target); }
+
+/* ====== Breakpoints ====== */
+
+/* Telas pequenas: até 480px */
+@media (max-width: 480px){
+  body { padding-left: 8px; padding-right: 8px; }
+  .nav [data-tab]{ flex: 1 1 calc(50% - 10px); text-align: center; }
+  .legislation-sub-tabs .leg-sub-btn { flex: 1 1 calc(50% - 10px); text-align: center; }
+  .section-header { padding: 10px 12px; }
+  .legislation-item { padding: 12px; }
+}
+
+/* Smartphones e tablets vertical: até 768px */
+@media (max-width: 768px){
+  .nav, .pode-ouvir-container nav { gap: 8px; }
+  .pode-ouv-scope .volume-control { width: 100%; justify-content: center; }
+  #legislation-search { width: 100%; }
+}
+
+/* Desktop amplo: acima de 1200px — só ajustes sutis sem mudar layout */
+@media (min-width: 1200px){
+  .pode-ouv-scope .podcast-tab-content { max-width: 820px; }
+}
 </style></head>
 <body>
 <div class="container">
