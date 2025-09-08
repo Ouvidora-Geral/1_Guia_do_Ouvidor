@@ -360,6 +360,7 @@
             display: none;
             padding-top: 25px;
             animation: slideDown 0.5s ease-in-out forwards;
+            overflow: hidden;
         }
         
         .section-content.active {
@@ -1055,6 +1056,24 @@
             .podcast-play-btn { width: 45px; height: 45px; font-size: 16px; }
             .logo-ouvidoria { max-width: 180px; }
         }
+        
+        /* Estilos para a busca textual na aba Legislação */
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #legislation-search {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -1097,7 +1116,7 @@
                     </div>
                     
                     <div class="chapter-content active" id="capitulo1">
-                        <h4>CAPÍTULO I - DISPOSIÇÕES GERAIS</h4>
+                        <h4>CAPÍTULO I - DISPOSIÇões GERAIS</h4>
                         <p><strong>Art. 1º</strong> Para os fins deste Manual, consideram-se:</p>
                         <p>I. Administração pública: conjunto de órgãos e entidades dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios, incluindo a Advocacia Pública, a Defensoria Pública e os Conselhos de Fiscalização Profissional no exercício de função pública delegada.</p>
                         <p>II. Agente público: pessoa física que exerce, ainda que transitoriamente ou sem remuneração, cargo, emprego ou função pública por eleição, nomeação, designação, contratação ou qualquer outra forma de investidura ou vínculo. No Sistema Cofen/Conselhos Regionais de Enfermagem, são considerados agentes públicos os conselheiros federais e regionais, empregados públicos, ocupantes de cargos comissionados, colaboradores, estagiários e prestadores de serviço.</p>
@@ -1616,454 +1635,474 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="section-content active" id="legislacao-content">
-                    <div class="legislation-list">
-                        <h3>Leis</h3>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">Lei nº 13.709/2018 (LGPD)</a></h3>
-                                <p>Lei Geral de Proteção de Dados Pessoais</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13460.htm" target="_blank">Lei nº 13.460/2017</a></h3>
-                                <p>Dispõe sobre participação, proteção e defesa dos direitos do usuário dos serviços públicos</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target="_blank">Lei nº 12.527/2011 (LAI)</a></h3>
-                                <p>Lei de Acesso à Informação</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/lei-n-749886-de-25-de-junho-de-1986/" target="_blank">LEI N 7.498/86, DE 25 DE JUNHO DE 1986 – ALTERADA PELAS LEIS NºS 14.434/2022 E 14.602/2023</a></h3>
-                                <p>Dispõe sobre a regulamentação do exercício da Enfermagem e dá outras providências.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="http://www.planalto.gov.br/ccivil_03/leis/l5905.htm" target="_blank">Lei nº 5.905/1973</a></h3>
-                                <p>Cria os Conselhos Federal e Regionais de Enfermagem</p>
-                            </div>
-                        </div>
-                        
-                        <h3>Decretos</h3>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9492.htm" target="_blank">Decreto nº 9.492/2018</a></h3>
-                                <p>Regulamenta a Lei nº 13.460/2017 sobre Ouvidorias</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/decreto-n-9440687/" target="_blank">DECRETO N 94.406/87</a></h3>
-                                <p>Regulamenta a Lei nº 7.498, de 25 de junho de 1986, que dispõe sobre o exercício da Enfermagem, e dá outras providências</p>
-                            </div>
-                        </div>
-                        
-                        <h3>Resoluções</h3>
-                        <h4>2025</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-788-de-21-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 788 DE 21 DE AGOSTO DE 2025</a></h3>
-                                <p>Regulamenta o uso terapêutico dos concentrados sanguíneos autólogos no âmbito da enfermagem.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-787-de-21-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 787 DE 21 DE AGOSTO DE 2025</a></h3>
-                                <p>Regulamenta a atuação da equipe de enfermagem na promoção, prevenção, tratamento e reabilitação de pessoas com Lesões Cutâneas.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-786-de-07-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 786 DE 07 DE AGOSTO DE 2025</a></h3>
-                                <p>Altera o Anexo II da Resolução Cofen nº 737, de 2 de fevereiro de 2024, que normatiza a atuação do Enfermeiro Obstétrico e Obstetriz na assistência à mulher no Parto Domiciliar Planejado.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-785-de-04-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 785 DE 04 DE AGOSTO DE 2025</a></h3>
-                                <p>Dispõe sobre a divulgação, no Portal da Transparência, de informações referentes a convênios, termos de parceria, termos de fomento, termos de colaboração, acordos de cooperação e outros instrumentos congêneres.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-784-de-30-de-julho-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 784/2025</a></h3>
-                                <p>Altera o prazo de vigência da Resolução Cofen nº 782, que institui os procedimentos para concessão, renovação e cancelamento do registro da Anotação de Responsabilidade Técnica de Enfermagem.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-782-de-02-de-julho-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 782/2025</a></h3>
-                                <p>Institui os procedimentos necessários para concessão, renovação e cancelamento do registro da Anotação de Responsabilidade Técnica de Enfermagem e define as atribuições do Enfermeiro Responsável Técnico.</p>
-                            </div>
-                        </div>
-                        <h4>2024</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-736-de-17-de-janeiro-de-2024/" target="_blank">RESOLUÇÃO COFEN Nº 736/2024</a></h3>
-                                <p>Dispõe sobre a implementação do Processo de Enfermagem em todo contexto socioambiental onde ocorre o cuidado de enfermagem.</p>
-                            </div>
-                        </div>
-                        <h4>2023</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-723-2023/" target="_blank">RESOLUÇÃO COFEN Nº 723/2023</a></h3>
-                                <p>Normatiza a atuação do enfermeiro na execução do procedimento de descompressão torácica por agulha e outros procedimentos, em pacientes com agravos torácicos em risco de morte, no atendimento pré-hospitalar móvel.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-722-2023/" target="_blank">RESOLUÇÃO COFEN Nº 722/2023</a></h3>
-                                <p>Normatiza e estabelece critérios aos profissionais de enfermagem que integram as equipes de Atendimento Pré-hospitalar, para atuação em áreas de risco e/ou de difícil acesso.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-720-2023-alterada-pela-resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 720/2023 – ALTERADA PELA RESOLUÇÃO COFEN Nº 721/2023</a></h3>
-                                <p>Normatiza a atuação do Enfermeiro em Auditoria.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-718-2023/" target="_blank">RESOLUÇÃO COFEN Nº 718/2023</a></h3>
-                                <p>Altera o Anexo da Resolução Cofen nº 688, de 04 de fevereiro de 2022, que normatiza a implementação de diretrizes assistenciais e a administração de medicamentos para a equipe de enfermagem que atua na modalidade Suporte Básico de Vida e reconhece o Suporte Intermediário de Vida em serviços públicos e privados.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 721/2023</a></h3>
-                                <p>Atualiza a norma técnica para Registro de Empresa no âmbito do Conselho Federal de Enfermagem.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-715-2023/" target="_blank">RESOLUÇÃO COFEN Nº 715/2023</a></h3>
-                                <p>Altera a Resolução Cofen nº 529, de 9 de novembro de 2016, que trata da atuação do Enfermeiro na área da Estética, e dá outras providências.</p>
-                            </div>
-                        </div>
-                        <h4>2022</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-713-2022/" target="_blank">RESOLUÇÃO COFEN Nº 713/2022</a></h3>
-                                <p>Atualiza a norma de atuação dos profissionais de enfermagem no Atendimento Pré-hospitalar (APH) móvel Terrestre e Aquaviário, quer seja na assistência direta, no gerenciamento e/ou na Central de Regulação das Urgências (CRU), em serviços públicos e privados, civis e militares.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-709-2022/" target="_blank">RESOLUÇÃO COFEN Nº 709/2022</a></h3>
-                                <p>Atualiza a Norma Técnica que dispõe sobre a Atuação do Enfermeiro e Técnico de Enfermagem em Hemoterapia.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-705-2022/" target="_blank">RESOLUÇÃO COFEN Nº 705/2022</a></h3>
-                                <p>Atualiza, no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem, a atuação dos Profissionais de Enfermagem nos cuidados em traumato-ortopedia e procedimentos de imobilização.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-696-2022-alterada-pela-resolucao-cofen-n-707-2022-e-713-2023/" target="_blank">RESOLUÇÃO COFEN Nº 696/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 707/2022 E 713/2023</a></h3>
-                                <p>Dispõe sobre a atuação da Enfermagem na Saúde Digital, normatizando a Telenfermagem.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-688-2022-alterada-pela-resolucao-cofen-n-718-2023/" target="_blank">RESOLUÇÃO COFEN Nº 688/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 718/2023</a></h3>
-                                <p>Normatiza a implementação de diretrizes assistenciais e a administração de medicamentos para a equipe de enfermagem que atua na modalidade Suporte Básico de Vida e reconhece o Suporte Intermediário de Vida em serviços públicos e privados.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-710-2022/" target="_blank">RESOLUÇÃO COFEN Nº 710/2022</a></h3>
-                                <p>Atualiza a norma técnica referente à atuação da Equipe de Enfermagem no processo de doação, captação e transplante de órgãos, tecidos e células, e dá outras providências.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-706-2022-prorrogada-pela-resolucao-cofen-n-714-2022-alterada-pela-resolucao-cofen-n-758-2024/" target="_blank">RESOLUÇÃO COFEN Nº 706/2022 – PRORROGADA PELA RESOLUÇÃO COFEN Nº 714/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 758/2024</a></h3>
-                                <p>Aprova o Código de Processo Ético do Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-698-2022-revogada-pela-resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 698/2022 – REVOGADA PELA RESOLUÇÃO COFEN Nº 721/2023</a></h3>
-                                <p>Altera e atualiza o Organograma e o Caderno de Atribuições, cria e extingue cargos e funções, e dá outras providências.</p>
-                            </div>
-                        </div>
-                        <h4>2021</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-660-2021/" target="_blank">RESOLUÇÃO COFEN Nº 660/2021</a></h3>
-                                <p>Altera a Resolução Cofen 656, de 17 de dezembro de 2020, que normatiza a atuação do enfermeiro na assistência direta e no gerenciamento do Atendimento Pré-Hospitalar Móvel e Inter-hospitalar em veículo aéreo.</p>
-                            </div>
-                        </div>
-                        <h4>2020</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-626-2020/" target="_blank">RESOLUÇÃO COFEN Nº 626/2020</a></h3>
-                                <p>Altera a Resolução Cofen nº 529, de 9 de novembro de 2016, que trata da atuação do Enfermeiro na área da Estética, e dá outras providências.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-656-2020-alterada-pela-resolucao-cofen-n-660-2021/" target="_blank">RESOLUÇÃO COFEN Nº 656/2020 – ALTERADA PELA RESOLUÇÃO COFEN Nº 660/2021</a></h3>
-                                <p>Normatiza a atuação do enfermeiro na assistência direta e no gerenciamento do Atendimento Pré-Hospitalar Móvel e Inter-hospitalar em veículo aéreo.</p>
-                            </div>
-                        </div>
-                        <h4>2018</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-581-2018-alterada-pela-resolucao-cofen-n-625-2020-e-decisoes-cofen-ns-065-2021-20-2021-263-2023-e-264-2023/" target="_blank">RESOLUÇÃO COFEN Nº 581/2018 – ALTERADA PELA RESOLUÇÃO COFEN Nº 625/2020 E DECISÕES COFEN NºS 065/2021, 20/2021, 263/2023 E 264/2023</a></h3>
-                                <p>Atualiza, no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem, os procedimentos para Registro de Títulos de Pós-Graduação Lato e Stricto Sensu concedido a Enfermeiros e aprova a lista das especialidades.</p>
-                            </div>
-                        </div>
-                        <h4>2003</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/resolucao-cofen-278-2003/" target="_blank">RESOLUÇÃO COFEN-278/2003</a></h3>
-                                <p>Dispõe sobre sutura efetuada por Profissional de Enfermagem.</p>
-                            </div>
-                        </div>
+                    <div class="search-container">
+                        <input type="text" id="legislation-search" placeholder="Buscar por leis, decretos ou resoluções..." onkeyup="filterLegislation()">
+                    </div>
+                    <div class="legislation-sub-tabs">
+                        <button class="tab-btn active" data-subtab="leis" onclick="openSubTab(event, 'leis')">Leis</button>
+                        <button class="tab-btn" data-subtab="decretos" onclick="openSubTab(event, 'decretos')">Decretos</button>
+                        <button class="tab-btn" data-subtab="resolucoes" onclick="openSubTab(event, 'resolucoes')">Resoluções</button>
+                        <button class="tab-btn" data-subtab="pareceres" onclick="openSubTab(event, 'pareceres')">Pareceres</button>
+                        <button class="tab-btn" data-subtab="notas" onclick="openSubTab(event, 'notas')">Notas Técnicas</button>
+                    </div>
 
-                        <h3>Pareceres</h3>
-                        <h4>2025</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-n-262025camaras-tecnicas-de-enfermagem/" target="_blank">PARECER Nº 26/2025/CÂMARAS TÉCNICAS DE ENFERMAGEM</a></h3>
-                                <p>Parecer Técnico sobre a possibilidade de atuação do enfermeiro como anestesista no Brasil, com base em modelos internacionais e diante da escassez de médicos anestesiologistas. A proposta envolve a criação de programas de especialização e demanda análise quanto à legalidade, viabilidade educacional, segurança do paciente e impactos no sistema de saúde.</p>
+                    <div id="leis" class="legislation-sub-content active">
+                        <div class="legislation-list">
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">Lei nº 13.709/2018 (LGPD)</a></h3>
+                                    <p>Lei Geral de Proteção de Dados Pessoais</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13460.htm" target="_blank">Lei nº 13.460/2017</a></h3>
+                                    <p>Dispõe sobre participação, proteção e defesa dos direitos do usuário dos serviços públicos</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target="_blank">Lei nº 12.527/2011 (LAI)</a></h3>
+                                    <p>Lei de Acesso à Informação</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/lei-n-749886-de-25-de-junho-de-1986/" target="_blank">LEI N 7.498/86, DE 25 DE JUNHO DE 1986 – ALTERADA PELAS LEIS NºS 14.434/2022 E 14.602/2023</a></h3>
+                                    <p>Dispõe sobre a regulamentação do exercício da Enfermagem e dá outras providências.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="http://www.planalto.gov.br/ccivil_03/leis/l5905.htm" target="_blank">Lei nº 5.905/1973</a></h3>
+                                    <p>Cria os Conselhos Federal e Regionais de Enfermagem</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-n-282025camaras-tecnicas-de-enfermagem/" target="_blank">PARECER Nº 28/2025/CÂMARAS TÉCNICAS DE ENFERMAGEM</a></h3>
-                                <p>Parecer Técnico sobre as evidências científicas sobre o uso do Botão Anestésico e outras formas de analgesia na inserção do Dispositivo Intrauterino (DIU). Revisão das técnicas anestésicas utilizadas, incluindo bloqueio paracervical e lidocaína tópica, bem como seus efeitos na redução da dor, sucesso da inserção e satisfação das pacientes. Recomendação baseada na melhor evidência disponível, com orientação para individualização da analgesia conforme a necessidade e preferência da paciente.</p>
-                            </div>
-                        </div>
-                        <h4>2024</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-no-16-2024-cofen-camtec-ctlnenf/" target="_blank">PARECER Nº 16/2024/COFEN/CAMTEC/CTLNENF</a></h3>
-                                <p>Parecer técnico sobre o enquadramento do SESMT como programa de saúde e a obrigatoriedade de supervisão de técnicos de enfermagem por enfermeiros.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-normativo-no-1-2024-cofen/" target="_blank">PARECER NORMATIVO Nº 1/2024/COFEN</a></h3>
-                                <p>Fornece parâmetros para o planejamento da força de trabalho de enfermagem.</p>
-                            </div>
-                        </div>
-                        <h4>2023</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-29-2023-ctep-cofen/" target="_blank">PARECER DE CAMARA TECNICA No. 29/2023/CTEP/COFEN</a></h3>
-                                <p>Registro de Título de Especialista em Estética avançada com ênfase em Harmonização Facial.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-74-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 74/2023/PLEN/COFEN</a></h3>
-                                <p>ATUAÇÃO DO ENFERMEIRO EM TRICOLOGIA.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-6-2023-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA No. 6/2023/CTEP/COFEN</a></h3>
-                                <p>Título de Pós-graduação Lato Sensu em “Estética Invasiva: Procedimentos não cirúrgicos”.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-13-2023-ctln-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA No. 13/2023/CTLN/COFEN</a></h3>
-                                <p>Estágio de pós-graduação em instituição diferente da que ofertou o conteúdo teórico.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-70-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 70/2023/PLEN/COFEN</a></h3>
-                                <p>Nutrição parenteral domiciliar. Capacitação de familiar e responsável legal pelo Enfermeiro.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-3-2023-proger-dpac-spc-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 3/2023/PROGER/DPAC/SPC/COFEN</a></h3>
-                                <p>Prescrição de medicamentos por Enfermeiro.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-14-2023-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N. 14/2023/CTEP/COFEN</a></h3>
-                                <p>Registro de Titulo Lato sensu “Terapias Pró-Oxidativas, Ozonioterapia Medicinal e Fisiologia Humana Aplicada”.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-76-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 76/2023/PLEN/COFEN</a></h3>
-                                <p>Transporte intra-hospitalar do paciente crítico em pós-operatório imediato.</p>
-                            </div>
-                        </div>
-                        <h4>2022</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-062-2022-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 062/2022/CTEP/COFEN</a></h3>
-                                <p>Análise do requerimento de registro do título de especialista em Estética.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-n-022-2022-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL Nº 022/2022/COFEN</a></h3>
-                                <p>Análise acerca da legalidade da capacitação do cuidador familiar leigo pelo Enfermeiro, na assistência específica de aspiração traqueal, no ambiente domiciliar.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0024-2022-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0024/2022/CTEP/COFEN</a></h3>
-                                <p>Projeto de Pesquisa para estabelecer o panorama da educação técnica de nível médio (EPTNME) em Enfermagem no Brasil.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-053-2022-ctep-cofen/" target="_blank">Parecer de Câmara Técnica N° 053/2022/CTEP/COFEN</a></h3>
-                                <p>Análise dos Títulos de Pós-graduação lato sensu “Ozonioterapia”.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0056-2022-ctln-ctas-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0056/2022/CTLN/CTAS/COFEN</a></h3>
-                                <p>Auxiliar de Enfermagem em Unidades de Hemodiálise.</p>
-                            </div>
-                        </div>
-                        <h4>2021</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0094-2021-ctln-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0094/2021/CTLN/COFEN</a></h3>
-                                <p>Realização de procedimento de anestesia local injetável por enfermeiro especialista em podiatria, estomaterapia ou dermatologia.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0112-2021-ctln-dgep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N° 0112/2021/CTLN/DGEP/COFEN</a></h3>
-                                <p>Necessidade de realizar Dimensionamento de Pessoal no Serviço de Home Care.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0107-2021-ctln-dgep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N° 0107/2021/CTLN/DGEP/COFEN</a></h3>
-                                <p>Atuação e capacitação do Enfermeiro para assumir a Coordenação do Serviço de Controle de Infecção Hospitalar – SCIH.</p>
-                            </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-de-conselheira-federal-n-333-2021-cofen/" target="_blank">PARECER DE CONSELHEIRA FEDERAL N° 333/2021/COFEN</a></h3>
-                                <p>Competência técnico-científica, ética e legal dos profissionais de enfermagem para atuar em Unidade de Terapia Intensiva.</p>
-                            </div>
-                        </div>
-                        <h4>2020</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/parecer-normativo-n-001-2020-cofen/" target="_blank">PARECER NORMATIVO Nº 001/2020/COFEN</a></h3>
-                                <p>REGULAMENTAÇÃO. OZONIOTERAPIA COMO PRÁTICA DO ENFERMEIRO NO BRASIL.</p>
-                            </div>
-                        </div>
+                    </div>
 
-                        <h3>Decisões</h3>
-                        <h4>2023</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/decisao-cofen-n-263-de-15-de-dezembro-de-2023/" target="_blank">DECISÃO COFEN Nº 263/2023</a></h3>
-                                <p>Reconhece a Podiatria Clínica como Especialidade do Enfermeiro e a insere na Área I, Saúde Coletiva; Saúde da Criança e do Adolescente; Saúde do Adulto, do Anexo da Resolução Cofen nº 581/2018.</p>
+                    <div id="decretos" class="legislation-sub-content">
+                        <div class="legislation-list">
+                            <h3>Decretos</h3>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9492.htm" target="_blank">Decreto nº 9.492/2018</a></h3>
+                                    <p>Regulamenta a Lei nº 13.460/2017 sobre Ouvidorias</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/decreto-n-9440687/" target="_blank">DECRETO N 94.406/87</a></h3>
+                                    <p>Regulamenta a Lei nº 7.498, de 25 de junho de 1986, que dispõe sobre o exercício da Enfermagem, e dá outras providências</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div id="resolucoes" class="legislation-sub-content">
+                        <div class="legislation-list">
+                            <h3>Resoluções</h3>
+                            <h4>2025</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-788-de-21-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 788 DE 21 DE AGOSTO DE 2025</a></h3>
+                                    <p>Regulamenta o uso terapêutico dos concentrados sanguíneos autólogos no âmbito da enfermagem.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-787-de-21-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 787 DE 21 DE AGOSTO DE 2025</a></h3>
+                                    <p>Regulamenta a atuação da equipe de enfermagem na promoção, prevenção, tratamento e reabilitação de pessoas com Lesões Cutâneas.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-786-de-07-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 786 DE 07 DE AGOSTO DE 2025</a></h3>
+                                    <p>Altera o Anexo II da Resolução Cofen nº 737, de 2 de fevereiro de 2024, que normatiza a atuação do Enfermeiro Obstétrico e Obstetriz na assistência à mulher no Parto Domiciliar Planejado.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-785-de-04-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 785 DE 04 DE AGOSTO DE 2025</a></h3>
+                                    <p>Dispõe sobre a divulgação, no Portal da Transparência, de informações referentes a convênios, termos de parceria, termos de fomento, termos de colaboração, acordos de cooperação e outros instrumentos congêneres.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-784-de-30-de-julho-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 784/2025</a></h3>
+                                    <p>Altera o prazo de vigência da Resolução Cofen nº 782, que institui os procedimentos para concessão, renovação e cancelamento do registro da Anotação de Responsabilidade Técnica de Enfermagem.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-782-de-02-de-julho-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 782/2025</a></h3>
+                                    <p>Institui os procedimentos necessários para concessão, renovação e cancelamento do registro da Anotação de Responsabilidade Técnica de Enfermagem e define as atribuições do Enfermeiro Responsável Técnico.</p>
+                                </div>
+                            </div>
+                            <h4>2024</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-736-de-17-de-janeiro-de-2024/" target="_blank">RESOLUÇÃO COFEN Nº 736/2024</a></h3>
+                                    <p>Dispõe sobre a implementação do Processo de Enfermagem em todo contexto socioambiental onde ocorre o cuidado de enfermagem.</p>
+                                </div>
+                            </div>
+                            <h4>2023</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-723-2023/" target="_blank">RESOLUÇÃO COFEN Nº 723/2023</a></h3>
+                                    <p>Normatiza a atuação do enfermeiro na execução do procedimento de descompressão torácica por agulha e outros procedimentos, em pacientes com agravos torácicos em risco de morte, no atendimento pré-hospitalar móvel.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-722-2023/" target="_blank">RESOLUÇÃO COFEN Nº 722/2023</a></h3>
+                                    <p>Normatiza e estabelece critérios aos profissionais de enfermagem que integram as equipes de Atendimento Pré-hospitalar, para atuação em áreas de risco e/ou de difícil acesso.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-720-2023-alterada-pela-resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 720/2023 – ALTERADA PELA RESOLUÇÃO COFEN Nº 721/2023</a></h3>
+                                    <p>Normatiza a atuação do Enfermeiro em Auditoria.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-718-2023/" target="_blank">RESOLUÇÃO COFEN Nº 718/2023</a></h3>
+                                    <p>Altera o Anexo da Resolução Cofen nº 688, de 04 de fevereiro de 2022, que normatiza a implementação de diretrizes assistenciais e a administração de medicamentos para a equipe de enfermagem que atua na modalidade Suporte Básico de Vida e reconhece o Suporte Intermediário de Vida em serviços públicos e privados.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 721/2023</a></h3>
+                                    <p>Atualiza a norma técnica para Registro de Empresa no âmbito do Conselho Federal de Enfermagem.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-715-2023/" target="_blank">RESOLUÇÃO COFEN Nº 715/2023</a></h3>
+                                    <p>Altera a Resolução Cofen nº 529, de 9 de novembro de 2016, que trata da atuação do Enfermeiro na área da Estética, e dá outras providências.</p>
+                                </div>
+                            </div>
+                            <h4>2022</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-713-2022/" target="_blank">RESOLUÇÃO COFEN Nº 713/2022</a></h3>
+                                    <p>Atualiza a norma de atuação dos profissionais de enfermagem no Atendimento Pré-hospitalar (APH) móvel Terrestre e Aquaviário, quer seja na assistência direta, no gerenciamento e/ou na Central de Regulação das Urgências (CRU), em serviços públicos e privados, civis e militares.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-709-2022/" target="_blank">RESOLUÇÃO COFEN Nº 709/2022</a></h3>
+                                    <p>Atualiza a Norma Técnica que dispõe sobre a Atuação do Enfermeiro e Técnico de Enfermagem em Hemoterapia.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-705-2022/" target="_blank">RESOLUÇÃO COFEN Nº 705/2022</a></h3>
+                                    <p>Atualiza, no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem, a atuação dos Profissionais de Enfermagem nos cuidados em traumato-ortopedia e procedimentos de imobilização.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-696-2022-alterada-pela-resolucao-cofen-n-707-2022-e-713-2023/" target="_blank">RESOLUÇÃO COFEN Nº 696/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 707/2022 E 713/2023</a></h3>
+                                    <p>Dispõe sobre a atuação da Enfermagem na Saúde Digital, normatizando a Telenfermagem.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-688-2022-alterada-pela-resolucao-cofen-n-718-2023/" target="_blank">RESOLUÇÃO COFEN Nº 688/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 718/2023</a></h3>
+                                    <p>Normatiza a implementação de diretrizes assistenciais e a administração de medicamentos para a equipe de enfermagem que atua na modalidade Suporte Básico de Vida e reconhece o Suporte Intermediário de Vida em serviços públicos e privados.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-710-2022/" target="_blank">RESOLUÇÃO COFEN Nº 710/2022</a></h3>
+                                    <p>Atualiza a norma técnica referente à atuação da Equipe de Enfermagem no processo de doação, captação e transplante de órgãos, tecidos e células, e dá outras providências.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-706-2022-prorrogada-pela-resolucao-cofen-n-714-2022-alterada-pela-resolucao-cofen-n-758-2024/" target="_blank">RESOLUÇÃO COFEN Nº 706/2022 – PRORROGADA PELA RESOLUÇÃO COFEN Nº 714/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 758/2024</a></h3>
+                                    <p>Aprova o Código de Processo Ético do Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-698-2022-revogada-pela-resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 698/2022 – REVOGADA PELA RESOLUÇÃO COFEN Nº 721/2023</a></h3>
+                                    <p>Altera e atualiza o Organograma e o Caderno de Atribuições, cria e extingue cargos e funções, e dá outras providências.</p>
+                                </div>
+                            </div>
+                            <h4>2021</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-660-2021/" target="_blank">RESOLUÇÃO COFEN Nº 660/2021</a></h3>
+                                    <p>Altera a Resolução Cofen 656, de 17 de dezembro de 2020, que normatiza a atuação do enfermeiro na assistência direta e no gerenciamento do Atendimento Pré-Hospitalar Móvel e Inter-hospitalar em veículo aéreo.</p>
+                                </div>
+                            </div>
+                            <h4>2020</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-626-2020/" target="_blank">RESOLUÇÃO COFEN Nº 626/2020</a></h3>
+                                    <p>Altera a Resolução Cofen nº 529, de 9 de novembro de 2016, que trata da atuação do Enfermeiro na área da Estética, e dá outras providências.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-656-2020-alterada-pela-resolucao-cofen-n-660-2021/" target="_blank">RESOLUÇÃO COFEN Nº 656/2020 – ALTERADA PELA RESOLUÇÃO COFEN Nº 660/2021</a></h3>
+                                    <p>Normatiza a atuação do enfermeiro na assistência direta e no gerenciamento do Atendimento Pré-Hospitalar Móvel e Inter-hospitalar em veículo aéreo.</p>
+                                </div>
+                            </div>
+                            <h4>2018</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-581-2018-alterada-pela-resolucao-cofen-n-625-2020-e-decisoes-cofen-ns-065-2021-20-2021-263-2023-e-264-2023/" target="_blank">RESOLUÇÃO COFEN Nº 581/2018 – ALTERADA PELA RESOLUÇÃO COFEN Nº 625/2020 E DECISÕES COFEN NºS 065/2021, 20/2021, 263/2023 E 264/2023</a></h3>
+                                    <p>Atualiza, no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem, os procedimentos para Registro de Títulos de Pós-Graduação Lato e Stricto Sensu concedido a Enfermeiros e aprova a lista das especialidades.</p>
+                                </div>
+                            </div>
+                            <h4>2003</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/resolucao-cofen-278-2003/" target="_blank">RESOLUÇÃO COFEN-278/2003</a></h3>
+                                    <p>Dispõe sobre sutura efetuada por Profissional de Enfermagem.</p>
+                                </div>
+                            </div>
 
-                        <h3>Notas Técnicas</h3>
-                        <h4>2025</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-4-2025-plenario/" target="_blank">NOTA TÉCNICA Nº 4/2025/PLENÁRIO</a></h3>
-                                <p>Esclarecimentos sobre a revogação da Resolução Cofen nº 280/2003.</p>
+                            <h3>Pareceres</h3>
+                            <h4>2025</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-n-262025camaras-tecnicas-de-enfermagem/" target="_blank">PARECER Nº 26/2025/CÂMARAS TÉCNICAS DE ENFERMAGEM</a></h3>
+                                    <p>Parecer Técnico sobre a possibilidade de atuação do enfermeiro como anestesista no Brasil, com base em modelos internacionais e diante da escassez de médicos anestesiologistas. A proposta envolve a criação de programas de especialização e demanda análise quanto à legalidade, viabilidade educacional, segurança do paciente e impactos no sistema de saúde.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-1-2025-plenario/" target="_blank">NOTA TÉCNICA Nº 1/2025/PLENÁRIO</a></h3>
-                                <p>Nota Técnica sobre Segurança do Paciente no Atendimento Pré-hospitalar Móvel (APH): contextos; conceitos; aspectos éticos; gerenciamento de riscos e manejo seguro do paciente.</p>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-n-282025camaras-tecnicas-de-enfermagem/" target="_blank">PARECER Nº 28/2025/CÂMARAS TÉCNICAS DE ENFERMAGEM</a></h3>
+                                    <p>Parecer Técnico sobre as evidências científicas sobre o uso do Botão Anestésico e outras formas de analgesia na inserção do Dispositivo Intrauterino (DIU). Revisão das técnicas anestésicas utilizadas, incluindo bloqueio paracervical e lidocaína tópica, bem como seus efeitos na redução da dor, sucesso da inserção e satisfação das pacientes. Recomendação baseada na melhor evidência disponível, com orientação para individualização da analgesia conforme a necessidade e preferência da paciente.</p>
+                                </div>
                             </div>
-                        </div>
-                        <h4>2024</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-001-2024-comite-de-operacoes-de-emergencia-em-saude-coes-cofen/" target="_blank">NOTA TÉCNICA Nº 001/2024 – COMITÊ DE OPERAÇÕES DE EMERGÊNCIA EM SAÚDE COES/COFEN</a></h3>
-                                <p>Competências e Atribuições do Enfermeiro para enfrentamento a epidemia de dengue em situação de emergência em saúde pública.</p>
+                            <h4>2024</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-no-16-2024-cofen-camtec-ctlnenf/" target="_blank">PARECER Nº 16/2024/COFEN/CAMTEC/CTLNENF</a></h3>
+                                    <p>Parecer técnico sobre o enquadramento do SESMT como programa de saúde e a obrigatoriedade de supervisão de técnicos de enfermagem por enfermeiros.</p>
+                                </div>
                             </div>
-                        </div>
-                        <h4>2023</h4>
-                        <div class="legislation-item">
-                            <i class="fas fa-book"></i>
-                            <div>
-                                <h3><a href="https://www.cofen.gov.br/nota-tecnica-cofen-no-001-2023/" target="_blank">NOTA TÉCNICA COFEN Nº 001/2023</a></h3>
-                                <p>Nota Técnica sobre Práticas Avançadas de Enfermagem no Brasil (PAE): contexto; conceitos; ações empreendidas, implementação e regulação.</p>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-normativo-no-1-2024-cofen/" target="_blank">PARECER NORMATIVO Nº 1/2024/COFEN</a></h3>
+                                    <p>Fornece parâmetros para o planejamento da força de trabalho de enfermagem.</p>
+                                </div>
+                            </div>
+                            <h4>2023</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-29-2023-ctep-cofen/" target="_blank">PARECER DE CAMARA TECNICA No. 29/2023/CTEP/COFEN</a></h3>
+                                    <p>Registro de Título de Especialista em Estética avançada com ênfase em Harmonização Facial.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-74-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 74/2023/PLEN/COFEN</a></h3>
+                                    <p>ATUAÇÃO DO ENFERMEIRO EM TRICOLOGIA.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-6-2023-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA No. 6/2023/CTEP/COFEN</a></h3>
+                                    <p>Título de Pós-graduação Lato Sensu em “Estética Invasiva: Procedimentos não cirúrgicos”.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-13-2023-ctln-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA No. 13/2023/CTLN/COFEN</a></h3>
+                                    <p>Estágio de pós-graduação em instituição diferente da que ofertou o conteúdo teórico.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-70-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 70/2023/PLEN/COFEN</a></h3>
+                                    <p>Nutrição parenteral domiciliar. Capacitação de familiar e responsável legal pelo Enfermeiro.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-3-2023-proger-dpac-spc-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 3/2023/PROGER/DPAC/SPC/COFEN</a></h3>
+                                    <p>Prescrição de medicamentos por Enfermeiro.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-14-2023-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N. 14/2023/CTEP/COFEN</a></h3>
+                                    <p>Registro de Titulo Lato sensu “Terapias Pró-Oxidativas, Ozonioterapia Medicinal e Fisiologia Humana Aplicada”.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-76-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 76/2023/PLEN/COFEN</a></h3>
+                                    <p>Transporte intra-hospitalar do paciente crítico em pós-operatório imediato.</p>
+                                </div>
+                            </div>
+                            <h4>2022</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-062-2022-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 062/2022/CTEP/COFEN</a></h3>
+                                    <p>Análise do requerimento de registro do título de especialista em Estética.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-n-022-2022-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL Nº 022/2022/COFEN</a></h3>
+                                    <p>Análise acerca da legalidade da capacitação do cuidador familiar leigo pelo Enfermeiro, na assistência específica de aspiração traqueal, no ambiente domiciliar.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0024-2022-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0024/2022/CTEP/COFEN</a></h3>
+                                    <p>Projeto de Pesquisa para estabelecer o panorama da educação técnica de nível médio (EPTNME) em Enfermagem no Brasil.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-053-2022-ctep-cofen/" target="_blank">Parecer de Câmara Técnica N° 053/2022/CTEP/COFEN</a></h3>
+                                    <p>Análise dos Títulos de Pós-graduação lato sensu “Ozonioterapia”.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0056-2022-ctln-ctas-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0056/2022/CTLN/CTAS/COFEN</a></h3>
+                                    <p>Auxiliar de Enfermagem em Unidades de Hemodiálise.</p>
+                                </div>
+                            </div>
+                            <h4>2021</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0094-2021-ctln-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0094/2021/CTLN/COFEN</a></h3>
+                                    <p>Realização de procedimento de anestesia local injetável por enfermeiro especialista em podiatria, estomaterapia ou dermatologia.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0112-2021-ctln-dgep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N° 0112/2021/CTLN/DGEP/COFEN</a></h3>
+                                    <p>Necessidade de realizar Dimensionamento de Pessoal no Serviço de Home Care.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0107-2021-ctln-dgep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N° 0107/2021/CTLN/DGEP/COFEN</a></h3>
+                                    <p>Atuação e capacitação do Enfermeiro para assumir a Coordenação do Serviço de Controle de Infecção Hospitalar – SCIH.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-de-conselheira-federal-n-333-2021-cofen/" target="_blank">PARECER DE CONSELHEIRA FEDERAL N° 333/2021/COFEN</a></h3>
+                                    <p>Competência técnico-científica, ética e legal dos profissionais de enfermagem para atuar em Unidade de Terapia Intensiva.</p>
+                                </div>
+                            </div>
+                            <h4>2020</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/parecer-normativo-n-001-2020-cofen/" target="_blank">PARECER NORMATIVO Nº 001/2020/COFEN</a></h3>
+                                    <p>REGULAMENTAÇÃO. OZONIOTERAPIA COMO PRÁTICA DO ENFERMEIRO NO BRASIL.</p>
+                                </div>
+                            </div>
+
+                            <h3>Decisões</h3>
+                            <h4>2023</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/decisao-cofen-n-263-de-15-de-dezembro-de-2023/" target="_blank">DECISÃO COFEN Nº 263/2023</a></h3>
+                                    <p>Reconhece a Podiatria Clínica como Especialidade do Enfermeiro e a insere na Área I, Saúde Coletiva; Saúde da Criança e do Adolescente; Saúde do Adulto, do Anexo da Resolução Cofen nº 581/2018.</p>
+                                </div>
+                            </div>
+
+                            <h3>Notas Técnicas</h3>
+                            <h4>2025</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-4-2025-plenario/" target="_blank">NOTA TÉCNICA Nº 4/2025/PLENÁRIO</a></h3>
+                                    <p>Esclarecimentos sobre a revogação da Resolução Cofen nº 280/2003.</p>
+                                </div>
+                            </div>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-1-2025-plenario/" target="_blank">NOTA TÉCNICA Nº 1/2025/PLENÁRIO</a></h3>
+                                    <p>Nota Técnica sobre Segurança do Paciente no Atendimento Pré-hospitalar Móvel (APH): contextos; conceitos; aspectos éticos; gerenciamento de riscos e manejo seguro do paciente.</p>
+                                </div>
+                            </div>
+                            <h4>2024</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-001-2024-comite-de-operacoes-de-emergencia-em-saude-coes-cofen/" target="_blank">NOTA TÉCNICA Nº 001/2024 – COMITÊ DE OPERAÇÕES DE EMERGÊNCIA EM SAÚDE COES/COFEN</a></h3>
+                                    <p>Competências e Atribuições do Enfermeiro para enfrentamento a epidemia de dengue em situação de emergência em saúde pública.</p>
+                                </div>
+                            </div>
+                            <h4>2023</h4>
+                            <div class="legislation-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h3><a href="https://www.cofen.gov.br/nota-tecnica-cofen-no-001-2023/" target="_blank">NOTA TÉCNICA COFEN Nº 001/2023</a></h3>
+                                    <p>Nota Técnica sobre Práticas Avançadas de Enfermagem no Brasil (PAE): contexto; conceitos; ações empreendidas, implementação e regulação.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2121,7 +2160,10 @@
                     <div class="podcast-player">
                         <h3><i class="fas fa-headphones-alt"></i> Novo Manual de Ouvidoria</h3>
                         
-                        <audio id="audioPlayer" style="display: none;"></audio>
+                        <audio id="audioPlayer" style="display: none;">
+                            <source src="https://raw.githubusercontent.com/Ouvidora-Geral/PodeOuvir/2e21cebd8846f59caeda2ae8f088857db83f6de9/PodCast_NovoManualOuvidoria.mp3" type="audio/mpeg">
+                            Seu navegador não suporta áudio.
+                        </audio>
                         
                         <div class="custom-player">
                             <div class="podcast-visualizer" id="podcast-visualizer"></div>
@@ -2181,6 +2223,8 @@
             const chapterNavBtns = document.querySelectorAll('.chapter-nav-btn');
             const chapterContents = document.querySelectorAll('.chapter-content');
             const podcastNavBtns = document.querySelectorAll('.podcast-nav-btn');
+            const legislationSubTabs = document.querySelectorAll('.legislation-sub-tabs .tab-btn');
+            const legislationSubContents = document.querySelectorAll('.legislation-sub-content');
             
             // Lógica para as abas principais
             tabBtns.forEach(btn => {
@@ -2228,6 +2272,37 @@
 
                     btn.classList.add('active');
                     document.getElementById(chapterId).classList.add('active');
+                });
+            });
+            
+            // Lógica para as sub-abas de legislação
+            legislationSubTabs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const subTabId = btn.dataset.subtab;
+                    legislationSubTabs.forEach(b => b.classList.remove('active'));
+                    legislationSubContents.forEach(c => c.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    document.getElementById(subTabId).classList.add('active');
+                });
+            });
+
+            // Lógica para o campo de busca na Legislação
+            const legislationSearch = document.getElementById('legislation-search');
+            legislationSearch.addEventListener('keyup', (e) => {
+                const searchValue = e.target.value.toLowerCase();
+                legislationSubContents.forEach(subContent => {
+                    if (subContent.classList.contains('active')) {
+                        const legislationItems = subContent.querySelectorAll('.legislation-item');
+                        legislationItems.forEach(item => {
+                            const text = item.textContent.toLowerCase();
+                            if (text.includes(searchValue)) {
+                                item.style.display = 'flex';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    }
                 });
             });
 
@@ -2451,6 +2526,42 @@
                 quizResults.style.display = 'none';
                 difficultySelector.style.display = 'block';
             };
+            
+            // Lógica para as sub-abas de legislação
+            const legislationSubTabs = document.querySelectorAll('.legislation-sub-tabs .tab-btn');
+            const legislationSubContents = document.querySelectorAll('.legislation-sub-content');
+
+            function openSubTab(evt, subTabName) {
+                legislationSubContents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                legislationSubTabs.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                document.getElementById(subTabName).style.display = 'block';
+                evt.currentTarget.classList.add('active');
+            }
+
+            // Lógica para o campo de busca na Legislação
+            const legislationSearch = document.getElementById('legislation-search');
+            legislationSearch.addEventListener('keyup', (e) => {
+                const searchValue = e.target.value.toLowerCase();
+                legislationSubContents.forEach(subContent => {
+                    if (subContent.style.display === 'block') { // Apenas filtra a aba ativa
+                        const legislationItems = subContent.querySelectorAll('.legislation-item');
+                        legislationItems.forEach(item => {
+                            const text = item.textContent.toLowerCase();
+                            if (text.includes(searchValue)) {
+                                item.style.display = 'flex';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
 
             // Lógica para o fluxograma interativo
             const flowSteps = document.querySelectorAll('.flow-step');
@@ -2506,7 +2617,6 @@
             const podcastCurrentTimeEl = document.getElementById('podcast-currentTime');
             const podcastDurationEl = document.getElementById('podcast-duration');
             const podcastVisualizer = document.getElementById('podcast-visualizer');
-            const podcastNavBtns = document.querySelectorAll('.podcast-nav-btn');
 
             let podcastVisualizerInterval;
             
@@ -2563,11 +2673,10 @@
             window.loadPodcast = function(episodeId) {
                 const episode = podcastEpisodes[episodeId];
                 if (episode) {
-                    // Update podcast content
                     document.querySelectorAll('.podcast-episode-content').forEach(el => el.classList.remove('active'));
                     document.getElementById(`podcast-${episodeId}`).classList.add('active');
 
-                    if (episode.src) {
+                    if (podcastAudio.src !== episode.src) {
                         podcastAudio.src = episode.src;
                         podcastAudio.load();
                         podcastAudio.addEventListener('loadedmetadata', () => {
@@ -2575,16 +2684,17 @@
                                 podcastDurationEl.textContent = formatTime(podcastAudio.duration);
                             }
                         }, { once: true });
-                    } else {
-                        podcastAudio.pause();
-                        podcastAudio.src = '';
-                        stopPodcastVisualizer();
-                        podcastPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
                     }
                 }
                 
                 podcastNavBtns.forEach(btn => btn.classList.remove('active'));
                 document.querySelector(`.podcast-nav-btn[data-episode="${episodeId}"]`).classList.add('active');
+                
+                if (!episode.src) {
+                    podcastAudio.pause();
+                    podcastPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    stopPodcastVisualizer();
+                }
             };
 
             // Event Listeners para o player de podcast
@@ -2628,14 +2738,25 @@
             function initApp() {
                 // Inicializa as abas principais
                 document.querySelector('.tab-btn[data-tab="study"]').click();
-                // Inicializa as seções do manual
+                
+                // Inicializa as seções do material
                 document.querySelector('.section-header[onclick*="Manual"]').click();
+                document.querySelector('.section-header[onclick*="denuncias"]').click();
+                document.querySelector('.section-header[onclick*="lgpd"]').click();
+                document.querySelector('.section-header[onclick*="funcoes"]').click();
+                document.querySelector('.section-header[onclick*="ouvidor"]').click();
+                document.querySelector('.section-header[onclick*="metodos"]').click();
+                document.querySelector('.section-header[onclick*="prazos"]').click();
+                
                 // Inicializa as abas de capítulos
                 document.querySelector('.chapter-nav-btn.active').click();
-                // Inicializa o visualizador do podcast
+                
+                // Inicializa o player de podcast
                 createVisualizerBars();
-                // Carrega o primeiro episódio do podcast
                 loadPodcast('episodio1');
+                
+                // Inicializa a aba de legislação
+                document.querySelector('.legislation-sub-tabs .tab-btn.active').click();
             }
 
             initApp();
